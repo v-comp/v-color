@@ -1,0 +1,47 @@
+{
+  "name": "v-color",
+  "version": "0.0.0",
+  "description": "Chrome-flavored color picker in Vue.js",
+  "keywords": ["color-picker", "chrome-flavored"],
+  "main": "dist/v-color.common.js",
+  "module": "dist/v-color.esm.js",
+  "unpkg": "dist/v-color.js",
+  "files": ["dist"],
+  "scripts": {
+    "server": "browser-sync start --server --reload-delay 1 --files \"index.html, ./dist/**\"",
+    "build:watch": "cross-env NODE_ENV=development rollup -c rollup.config.js -w",
+    "build:dev": "cross-env NODE_ENV=development rollup -c rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "start": "run-p build:watch server"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "cross-env": "^3.1.4",
+    "cssnano": "^3.10.0",
+    "http-server": "^0.9.0",
+    "npm-run-all": "^4.0.1",
+    "postcss-modules": "^0.6.4",
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-postcss": "^0.2.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-plugin-vue": "^2.2.20",
+    "rollup-watch": "^3.2.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/v-comp/v-color.git"
+  },
+  "bugs": {
+    "url": "https://github.com/v-comp/v-color/issues"
+  },
+  "homepage": "https://github.com/v-comp/v-color#readme",
+  "author": "wemlion <angusfu1126@qq.com>"
+}

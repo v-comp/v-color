@@ -1,0 +1,8 @@
+src
+dist/demo.js
+dist/demo.js.map
+.gitignore
+.npmignore
+index.html
+rollup.config.js
+yarn.lock
