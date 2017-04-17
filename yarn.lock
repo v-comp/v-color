@@ -1406,16 +1406,9 @@ http-errors@~1.5.0:
     setprototypeof "1.0.2"
     statuses ">= 1.3.1 < 2"
 
-http-proxy@1.15.2:
+http-proxy@1.15.2, http-proxy@^1.8.1:
   version "1.15.2"
   resolved "http://r.cnpmjs.org/http-proxy/download/http-proxy-1.15.2.tgz#642fdcaffe52d3448d2bda3b0079e9409064da31"
-  dependencies:
-    eventemitter3 "1.x.x"
-    requires-port "1.x.x"
-
-http-proxy@^1.8.1:
-  version "1.16.2"
-  resolved "http://r.cnpmjs.org/http-proxy/download/http-proxy-1.16.2.tgz#06dff292952bf64dbe8471fa9df73066d4f37742"
   dependencies:
     eventemitter3 "1.x.x"
     requires-port "1.x.x"
@@ -2937,7 +2930,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@2, request@^2.72.0, request@^2.79.0, request@^2.81.0:
+request@2, request@^2.79.0, request@^2.81.0:
   version "2.81.0"
   resolved "http://r.cnpmjs.org/request/download/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -2964,7 +2957,7 @@ request@2, request@^2.72.0, request@^2.79.0, request@^2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@2.78.0:
+request@2.78.0, request@^2.72.0:
   version "2.78.0"
   resolved "http://r.cnpmjs.org/request/download/request-2.78.0.tgz#e1c8dec346e1c81923b24acdb337f11decabe9cc"
   dependencies:
@@ -3138,6 +3131,12 @@ rollup@^0.41.4:
 rx@4.1.0:
   version "4.1.0"
   resolved "http://r.cnpmjs.org/rx/download/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+
+rxjs@5.3.0:
+  version "5.3.0"
+  resolved "http://r.cnpmjs.org/rxjs/download/rxjs-5.3.0.tgz#d88ccbdd46af290cbdb97d5d8055e52453fabe2d"
+  dependencies:
+    symbol-observable "^1.0.1"
 
 safe-buffer@^5.0.1:
   version "5.0.1"
@@ -3478,6 +3477,10 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+symbol-observable@^1.0.1:
+  version "1.0.4"
+  resolved "http://r.cnpmjs.org/symbol-observable/download/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
+
 tar-pack@^3.4.0:
   version "3.4.0"
   resolved "http://r.cnpmjs.org/tar-pack/download/tar-pack-3.4.0.tgz#23be2d7f671a8339376cbdb0b8fe3fdebf317984"
@@ -3639,6 +3642,10 @@ vlq@^0.2.1:
 void-elements@^2.0.1:
   version "2.0.1"
   resolved "http://r.cnpmjs.org/void-elements/download/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
+
+vue-rx@^3.1.0:
+  version "3.1.0"
+  resolved "http://r.cnpmjs.org/vue-rx/download/vue-rx-3.1.0.tgz#149fb6079401b0ea7cd5abe9610296e604a21a6f"
 
 vue-template-compiler@*:
   version "2.2.6"

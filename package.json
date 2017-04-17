@@ -2,11 +2,16 @@
   "name": "v-color",
   "version": "0.0.0",
   "description": "Chrome-flavored color picker in Vue.js",
-  "keywords": ["color-picker", "chrome-flavored"],
+  "keywords": [
+    "color-picker",
+    "chrome-flavored"
+  ],
   "main": "dist/v-color.common.js",
   "module": "dist/v-color.esm.js",
   "unpkg": "dist/v-color.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "server": "browser-sync start --server --reload-delay 1 --files \"index.html, ./dist/**\"",
     "build:watch": "cross-env NODE_ENV=development rollup -c rollup.config.js -w",
@@ -32,7 +37,9 @@
     "rollup-watch": "^3.2.2"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "rxjs": "5.3.0",
+    "vue-rx": "^3.1.0"
   },
   "license": "MIT",
   "repository": {
