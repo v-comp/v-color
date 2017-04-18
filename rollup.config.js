@@ -32,7 +32,8 @@ export default {
         postcssModules({
           getJSON(id, exportTokens) {
             cssExportMap[id] = exportTokens;
-          }
+          },
+          generateScopedName: '[name]__[local]___[hash:base64:5]'
         }),
         cssnano()
       ],

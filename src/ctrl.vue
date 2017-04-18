@@ -45,17 +45,17 @@ export default {
   data() {
     return {
       styles: {
-        bar: clsn('vcolor__ctrl__bar'),
+        bar: clsn('ctrl-bar'),
         ctrl: clsn(
-          'vcolor__ctrl__circle',
-          this.dir === 'both' ? 'vcolor__ctrl__circle__transparent' : ''
+          'ctrl-circle',
+          this.dir === 'both' ? 'ctrl-circle-transparent' : ''
         )
       }
     };
   },
   domStreams: ['mousedown$'],
   subscriptions() {
-    const selector = `.${clsn('vcolor__ctrl__circle')}`;
+    const selector = `.${clsn('ctrl-circle')}`;
     const resultByDir = (res) => {
         const dir = this.dir;
         const left = percent(res.left);
@@ -79,6 +79,7 @@ export default {
       .map(this.calcProportion);
     return {
       pointerPos: change$
+        .startWith({left: 1, top: 0})
         .map(resultByDir)
         .do(res => this.$emit('input', res))
     };

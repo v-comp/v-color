@@ -84,7 +84,77 @@ var index = createCommonjsModule(function (module) {
 }());
 });
 
-var styles = __$styleInject("._vcolor__container_h125c_1{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo}._vcolor__layout__table_h125c_11{display:table}._vcolor__layout__row_h125c_14{display:table-row}._vcolor__layout__cell_h125c_17{display:table-cell;vertical-align:top}._vcolor__ctrl__bar_h125c_21{position:relative;height:10px;margin-bottom:8px}._vcolor__ctrl__circle_h125c_26{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}._vcolor__ctrl__circle__transparent_h125c_37{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}._vcolor__saturation__wrap_h125c_44{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}._vcolor__saturation__black_h125c_53,._vcolor__saturation__pane_h125c_51,._vcolor__saturation__white_h125c_52{position:absolute;top:0;left:0;right:0;bottom:0}._vcolor__saturation__white_h125c_52{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}._vcolor__saturation__black_h125c_53{background:linear-gradient(0deg,#000,transparent)}._vcolor__ctrl__pane_h125c_67{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}._vcolor__preview__cell_h125c_74{width:32px}._vcolor__preview__circle_h125c_77{width:20px;height:20px;border-radius:50%}._vcolor__hue__bar_h125c_84{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}._vcolor__alpha__bar_h125c_87{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0,linear-gradient(90deg,rgba(81,0,255,0),#5100ff)}",{"vcolor__container":"_vcolor__container_h125c_1","vcolor__layout__table":"_vcolor__layout__table_h125c_11","vcolor__layout__row":"_vcolor__layout__row_h125c_14","vcolor__layout__cell":"_vcolor__layout__cell_h125c_17","vcolor__ctrl__bar":"_vcolor__ctrl__bar_h125c_21","vcolor__ctrl__circle":"_vcolor__ctrl__circle_h125c_26","vcolor__ctrl__circle__transparent":"_vcolor__ctrl__circle__transparent_h125c_37","vcolor__saturation__wrap":"_vcolor__saturation__wrap_h125c_44","vcolor__saturation__pane":"_vcolor__saturation__pane_h125c_51","vcolor__saturation__white":"_vcolor__saturation__white_h125c_52","vcolor__saturation__black":"_vcolor__saturation__black_h125c_53","vcolor__ctrl__pane":"_vcolor__ctrl__pane_h125c_67","vcolor__preview__cell":"_vcolor__preview__cell_h125c_74","vcolor__preview__circle":"_vcolor__preview__circle_h125c_77","vcolor__hue__bar":"_vcolor__hue__bar_h125c_84","vcolor__alpha__bar":"_vcolor__alpha__bar_h125c_87"});
+var styles = __$styleInject(".v-color__container___2TOwi{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo}.v-color__layout-table___3xU4S{display:table}.v-color__layout-row___N-J_B{display:table-row}.v-color__layout-cell___39Mnx{display:table-cell;vertical-align:top}.v-color__ctrl-bar___11tAC{position:relative;height:10px;margin-bottom:8px}.v-color__ctrl-circle___B9zHO{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}.v-color__ctrl-circle-transparent___1Y9dO{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}.v-color__saturation-wrap___19Cp1{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}.v-color__saturation-black___3rkzb,.v-color__saturation-pane___2ZiZe,.v-color__saturation-white___96QOa{position:absolute;top:0;left:0;right:0;bottom:0}.v-color__saturation-white___96QOa{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.v-color__saturation-black___3rkzb{background:linear-gradient(0deg,#000,transparent)}.v-color__ctrl-pane___1bMH1{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}.v-color__preview-cell___KiBel{width:32px}.v-color__preview-circle___eVLGz{width:20px;height:20px;border-radius:50%}.v-color__hue-bar___pLL8b{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.v-color__alpha-bar___xnpHX{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__alpha-band___1W0EV{position:absolute;left:0;top:0;width:100%;height:10px}",{"container":"v-color__container___2TOwi","layout-table":"v-color__layout-table___3xU4S","layout-row":"v-color__layout-row___N-J_B","layout-cell":"v-color__layout-cell___39Mnx","ctrl-bar":"v-color__ctrl-bar___11tAC","ctrl-circle":"v-color__ctrl-circle___B9zHO","ctrl-circle-transparent":"v-color__ctrl-circle-transparent___1Y9dO","saturation-wrap":"v-color__saturation-wrap___19Cp1","saturation-pane":"v-color__saturation-pane___2ZiZe","saturation-white":"v-color__saturation-white___96QOa","saturation-black":"v-color__saturation-black___3rkzb","ctrl-pane":"v-color__ctrl-pane___1bMH1","preview-cell":"v-color__preview-cell___KiBel","preview-circle":"v-color__preview-circle___eVLGz","hue-bar":"v-color__hue-bar___pLL8b","alpha-bar":"v-color__alpha-bar___xnpHX","alpha-band":"v-color__alpha-band___1W0EV"});
+
+function hsl2rgb(hsl) {
+  var h = hsl[0] / 360,
+      s = hsl[1] / 100,
+      l = hsl[2] / 100,
+      t1, t2, t3, rgb, val;
+
+  if (s == 0) {
+    val = l * 255;
+    return [val, val, val];
+  }
+
+  if (l < 0.5)
+    { t2 = l * (1 + s); }
+  else
+    { t2 = l + s - l * s; }
+  t1 = 2 * l - t2;
+
+  rgb = [0, 0, 0];
+  for (var i = 0; i < 3; i++) {
+    t3 = h + 1 / 3 * - (i - 1);
+    t3 < 0 && t3++;
+    t3 > 1 && t3--;
+
+    if (6 * t3 < 1)
+      { val = t1 + (t2 - t1) * 6 * t3; }
+    else if (2 * t3 < 1)
+      { val = t2; }
+    else if (3 * t3 < 2)
+      { val = t1 + (t2 - t1) * (2 / 3 - t3) * 6; }
+    else
+      { val = t1; }
+
+    rgb[i] = val * 255;
+  }
+
+  return rgb;
+}
+
+var hsl2rgb_1 = hsl2rgb;
+
+function hsv2rgb(hsv) {
+  var h = hsv[0] / 60,
+      s = hsv[1] / 100,
+      v = hsv[2] / 100,
+      hi = Math.floor(h) % 6;
+
+  var f = h - Math.floor(h),
+      p = 255 * v * (1 - s),
+      q = 255 * v * (1 - (s * f)),
+      t = 255 * v * (1 - (s * (1 - f))),
+      v = 255 * v;
+
+  switch(hi) {
+    case 0:
+      return [v, t, p];
+    case 1:
+      return [q, v, p];
+    case 2:
+      return [p, v, t];
+    case 3:
+      return [p, q, v];
+    case 4:
+      return [t, p, v];
+    case 5:
+      return [v, p, q];
+  }
+}
+
+var hsv2rgb_1 = hsv2rgb;
 
 var root = createCommonjsModule(function (module, exports) {
 "use strict";
@@ -2952,8 +3022,8 @@ var clsn$2 = function () {
   return index(names.map(function (n) { return styles[n]; }));
 };
 
-var percent$1 = function (num) { return ((num * 100) + "%"); };
-var limit01$1 = function (num) { return Math.min(Math.max(num, 0), 1); };
+var percent = function (num) { return ((num * 100) + "%"); };
+var limit01 = function (num) { return Math.min(Math.max(num, 0), 1); };
 var untilMouseUp = function () {
   return Observable_2
     .fromEvent(document, 'mousemove')
@@ -2978,10 +3048,10 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
   data: function data() {
     return {
       styles: {
-        bar: clsn$2('vcolor__ctrl__bar'),
+        bar: clsn$2('ctrl-bar'),
         ctrl: clsn$2(
-          'vcolor__ctrl__circle',
-          this.dir === 'both' ? 'vcolor__ctrl__circle__transparent' : ''
+          'ctrl-circle',
+          this.dir === 'both' ? 'ctrl-circle-transparent' : ''
         )
       }
     };
@@ -2990,11 +3060,11 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
   subscriptions: function subscriptions() {
     var this$1 = this;
 
-    var selector = "." + (clsn$2('vcolor__ctrl__circle'));
+    var selector = "." + (clsn$2('ctrl-circle'));
     var resultByDir = function (res) {
         var dir = this$1.dir;
-        var left = percent$1(res.left);
-        var top = percent$1(res.top);
+        var left = percent(res.left);
+        var top = percent(res.top);
         if (dir === 'both') {
           return { top: top, left: left };
         } else if (dir === 'v') {
@@ -3014,6 +3084,7 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
       .map(this.calcProportion);
     return {
       pointerPos: change$
+        .startWith({left: 1, top: 0})
         .map(resultByDir)
         .do(function (res) { return this$1.$emit('input', res); })
     };
@@ -3024,8 +3095,8 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
       var y = e.y;
       var r = this.$refs.bar.getBoundingClientRect();
       return {
-        left: limit01$1((x - r.left) / r.width),
-        top:  limit01$1((y - r.top)  / r.height)
+        left: limit01((x - r.left) / r.width),
+        top:  limit01((y - r.top)  / r.height)
       };
     }
   }
@@ -3037,21 +3108,23 @@ var clsn$1 = function () {
 
   return index(names.map(function (n) { return styles[n]; }));
 };
-var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ctrl',{class:_vm.styles.paletteWrap,attrs:{"dir":"both"},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v;},expression:"model"}},[_c('div',{class:_vm.styles.palettePane,style:({background: "red"})},[_c('div',{class:_vm.styles.paletteWhite}),_c('div',{class:_vm.styles.paletteBlack})])])},staticRenderFns: [],
+
+var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ctrl',{class:_vm.styles.paletteWrap,attrs:{"dir":"both"},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v;},expression:"model"}},[_c('div',{class:_vm.styles.palettePane,style:({background: _vm.bgcolor})},[_c('div',{class:_vm.styles.paletteWhite}),_c('div',{class:_vm.styles.paletteBlack})])])},staticRenderFns: [],
   name: 'v-color-saturation',
   props: {
     value: {
       type: Object
-    }
+    },
+    bgcolor: Number
   },
   components: { ctrl: ctrl },
   data: function data() {
     return {
       styles: {
-        paletteWrap: clsn$1('vcolor__saturation__wrap'),
-        palettePane: clsn$1('vcolor__saturation__pane'),
-        paletteWhite: clsn$1('vcolor__saturation__white'),
-        paletteBlack: clsn$1('vcolor__saturation__black')
+        paletteWrap: clsn$1('saturation-wrap'),
+        palettePane: clsn$1('saturation-pane'),
+        paletteWhite: clsn$1('saturation-white'),
+        paletteBlack: clsn$1('saturation-black')
       },
       model: this.value
     };
@@ -3063,6 +3136,7 @@ var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
   }
 };
 
+//  
 var clsn = function () {
   var names = [], len = arguments.length;
   while ( len-- ) names[ len ] = arguments[ len ];
@@ -3070,27 +3144,58 @@ var clsn = function () {
   return index(names.map(function (n) { return styles[n]; }));
 };
 
-var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.row},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview,style:({background: "red"})})]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}})],1)])])],1)},staticRenderFns: [],
+var nums2color = function (vals) { return vals.map(function (n) { return n | 0; }).join(','); };
+
+var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{attrs:{"bgcolor":_vm.hueColor},model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.row},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview,style:({background: _vm.realTime})})]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}},[_c('div',{class:_vm.styles.alphaBand,style:({background: _vm.gradientAlpha})})])],1)])])],1)},staticRenderFns: [],
   name: 'v-color',
   components: { saturation: saturation, ctrl: ctrl },
   data: function data() {
     return {
       styles: {
-        container: clsn('vcolor__container'),
-        realtime: clsn('vcolor__preview'),
-        ctrlPane: clsn('vcolor__ctrl__pane', 'vcolor__layout__table'),
-        previewCon: clsn('vcolor__layout__cell', 'vcolor__preview__cell'),
-        preview: clsn('vcolor__preview__circle'),
-        barCon: clsn('vcolor__bar__container', 'vcolor__layout__cell'),
-        row: clsn('vcolor__layout__row'),
+        container: clsn('container'),
+        realtime: clsn('preview'),
+        ctrlPane: clsn('ctrl-pane', 'layout-table'),
+        previewCon: clsn('layout-cell', 'preview-cell'),
+        preview: clsn('preview-circle'),
+        barCon: clsn('bar-container', 'layout-cell'),
+        row: clsn('layout-row'),
 
-        hue: clsn('vcolor__hue__bar'),
-        alpha: clsn('vcolor__alpha__bar')
+        hue: clsn('hue-bar'),
+        alpha: clsn('alpha-bar'),
+        alphaBand: clsn('alpha-band')
       },
       mixed: {},
       hue: {},
       alpha: {}
     };
+  },
+  computed: {
+    hueColor: function hueColor() {
+      var hsl = [parseFloat(this.hue.left || 0) * 3.6, 100, 50];
+      return ("rgb(" + (nums2color(hsl2rgb_1(hsl))) + ")");
+    },
+    realTime: function realTime() {
+      var ref = this.rgbColor;
+      var raw = ref.raw;
+      var alpha = parseFloat(this.alpha.left || 0) / 100;
+      return ("rgba(" + raw + ", " + alpha + ")");
+    },
+    rgbColor: function rgbColor() {
+      var hsv = [
+        parseFloat(this.hue.left || 0) * 3.6,
+        parseFloat(this.mixed.left || 0),
+        100 - parseFloat(this.mixed.top || 0) ];
+      var raw = nums2color(hsv2rgb_1(hsv));
+      return {
+        rgb: ("rgb(" + raw + ")"),
+        raw: raw
+      }
+    },
+    gradientAlpha: function gradientAlpha() {
+      var ref = this.rgbColor;
+      var raw = ref.raw;
+      return ("linear-gradient(to right, rgba(" + raw + ", 0) 0%, rgb(" + raw + ") 100%)");
+    }
   }
 };
 
