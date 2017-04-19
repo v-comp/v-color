@@ -78,7 +78,7 @@ var index = createCommonjsModule(function (module) {
 }());
 });
 
-var styles = __$styleInject(".v-color__container___2TOwi{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo}.v-color__layout-table___3xU4S{display:table}.v-color__layout-row___N-J_B{display:table-row}.v-color__layout-cell___39Mnx{display:table-cell;vertical-align:top}.v-color__ctrl-bar___11tAC{position:relative;height:10px;margin-bottom:8px}.v-color__ctrl-circle___B9zHO{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}.v-color__ctrl-circle-transparent___1Y9dO{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}.v-color__saturation-wrap___19Cp1{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}.v-color__saturation-black___3rkzb,.v-color__saturation-pane___2ZiZe,.v-color__saturation-white___96QOa{position:absolute;top:0;left:0;right:0;bottom:0}.v-color__saturation-white___96QOa{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.v-color__saturation-black___3rkzb{background:linear-gradient(0deg,#000,transparent)}.v-color__ctrl-pane___1bMH1{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}.v-color__preview-cell___KiBel{width:32px}.v-color__preview-circle___eVLGz{width:20px;height:20px;border-radius:50%}.v-color__hue-bar___pLL8b{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.v-color__alpha-bar___xnpHX{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__alpha-band___1W0EV{position:absolute;left:0;top:0;width:100%;height:10px}",{"container":"v-color__container___2TOwi","layout-table":"v-color__layout-table___3xU4S","layout-row":"v-color__layout-row___N-J_B","layout-cell":"v-color__layout-cell___39Mnx","ctrl-bar":"v-color__ctrl-bar___11tAC","ctrl-circle":"v-color__ctrl-circle___B9zHO","ctrl-circle-transparent":"v-color__ctrl-circle-transparent___1Y9dO","saturation-wrap":"v-color__saturation-wrap___19Cp1","saturation-pane":"v-color__saturation-pane___2ZiZe","saturation-white":"v-color__saturation-white___96QOa","saturation-black":"v-color__saturation-black___3rkzb","ctrl-pane":"v-color__ctrl-pane___1bMH1","preview-cell":"v-color__preview-cell___KiBel","preview-circle":"v-color__preview-circle___eVLGz","hue-bar":"v-color__hue-bar___pLL8b","alpha-bar":"v-color__alpha-bar___xnpHX","alpha-band":"v-color__alpha-band___1W0EV"});
+var styles = __$styleInject(".v-color__container___cDemu{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo;-webkit-user-select:none;user-select:none}.v-color__flex-row___ZbV3f{display:-webkit-box;display:flex}.v-color__ctrl-bar___o3FrJ{position:relative;height:10px;margin-bottom:8px}.v-color__ctrl-circle___NBVyI{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}.v-color__ctrl-circle-transparent___1SIXM{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}.v-color__saturation-wrap___3BKN5{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}.v-color__saturation-black___2vVMG,.v-color__saturation-pane___1hAf3,.v-color__saturation-white___JScnI{position:absolute;top:0;left:0;right:0;bottom:0}.v-color__saturation-white___JScnI{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.v-color__saturation-black___2vVMG{background:linear-gradient(0deg,#000,transparent)}.v-color__ctrl-pane___2Ee41{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}.v-color__preview-cell___2OGed{width:32px}.v-color__preview-circle___520Ph{position:relative;width:16px;height:16px;border-radius:50%;background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__preview-circle___520Ph>div{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%}.v-color__bar-container___1gnzs{-webkit-box-flex:1;flex:1}.v-color__hue-bar___6GDhc{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.v-color__alpha-bar___1fcGD{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__alpha-bar___1fcGD>div:first-child{position:absolute;left:0;top:0;width:100%;height:10px}.v-color__formats-inputs___2WXAY{display:-webkit-box;display:flex;-webkit-box-flex:1;flex:1}.v-color__formats-inputs___2WXAY input{width:100%;height:21px;font-size:11px;text-align:center;color:#333;border-radius:2px;border:none;box-shadow:inset 0 0 0 1px #dadada}.v-color__formats-inputs___2WXAY span{display:block;margin-top:12px;text-transform:uppercase;font-size:11px;line-height:11px;color:#969696;text-align:center}.v-color__format-switch___2gMlP{position:relative;width:32px;text-align:right}.v-color__format-switch___2gMlP>div{position:relative;margin-right:-4px;margin-top:12px;cursor:pointer}.v-color__format-switch___2gMlP>div>svg{width:24px;height:24px;border-radius:5px;background:transparent;border:1px solid transparent}.v-color__format-switch___2gMlP>div>svg:hover{border-color:#eee;background:#eee}",{"container":"v-color__container___cDemu","flex-row":"v-color__flex-row___ZbV3f","ctrl-bar":"v-color__ctrl-bar___o3FrJ","ctrl-circle":"v-color__ctrl-circle___NBVyI","ctrl-circle-transparent":"v-color__ctrl-circle-transparent___1SIXM","saturation-wrap":"v-color__saturation-wrap___3BKN5","saturation-pane":"v-color__saturation-pane___1hAf3","saturation-white":"v-color__saturation-white___JScnI","saturation-black":"v-color__saturation-black___2vVMG","ctrl-pane":"v-color__ctrl-pane___2Ee41","preview-cell":"v-color__preview-cell___2OGed","preview-circle":"v-color__preview-circle___520Ph","bar-container":"v-color__bar-container___1gnzs","hue-bar":"v-color__hue-bar___6GDhc","alpha-bar":"v-color__alpha-bar___1fcGD","formats-inputs":"v-color__formats-inputs___2WXAY","format-switch":"v-color__format-switch___2gMlP"});
 
 function hsl2rgb(hsl) {
   var h = hsl[0] / 360,
@@ -149,6 +149,22 @@ function hsv2rgb(hsv) {
 }
 
 var hsv2rgb_1 = hsv2rgb;
+
+function hsv2hsl(hsv) {
+  var h = hsv[0],
+      s = hsv[1] / 100,
+      v = hsv[2] / 100,
+      sl, l;
+
+  l = (2 - s) * v;
+  sl = s * v;
+  sl /= (l <= 1) ? l : 2 - l;
+  sl = sl || 0;
+  l /= 2;
+  return [h, sl * 100, l * 100];
+}
+
+var hsv2hsl_1 = hsv2hsl;
 
 var root = createCommonjsModule(function (module, exports) {
 "use strict";
@@ -3024,13 +3040,24 @@ var clsn$2 = function () {
 
   return index(names.map(function (n) { return styles[n]; }));
 };
+var extend = function (a) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  args.forEach(function (arg) {
+    if (arg && typeof arg === 'object') {
+      Object.keys(arg).forEach(function (k) { return (k in a) || (a[k] = arg[k]); });
+    }
+  });
+  return a;
+};
 
 var percent = function (num) { return ((num * 100) + "%"); };
 var limit01 = function (num) { return Math.min(Math.max(num, 0), 1); };
 var untilMouseUp = function () {
   return Observable_2
     .fromEvent(document, 'mousemove')
-    .takeUntil(Observable_2.fromEvent(document, 'mouseup'))
+    .takeUntil(Observable_2.fromEvent(document, 'mouseup'));
 };
 
 var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"stream",rawName:"v-stream:mousedown",value:(_vm.mousedown$),expression:"mousedown$",arg:"mousedown"}],ref:"bar",class:_vm.styles.bar},[_vm._t("default"),_c('div',{class:_vm.styles.ctrl,style:(_vm.pointerPos)})],2)},staticRenderFns: [],
@@ -3065,16 +3092,16 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
 
     var selector = "." + (clsn$2('ctrl-circle'));
     var resultByDir = function (res) {
-        var dir = this$1.dir;
-        var left = percent(res.left);
-        var top = percent(res.top);
-        if (dir === 'both') {
-          return { top: top, left: left };
-        } else if (dir === 'v') {
-          return { top: top };
-        } else {
-          return { left: left };
-        }
+      var dir = this$1.dir;
+      var left = percent(res.left);
+      var top = percent(res.top);
+      if (dir === 'both') {
+        return { top: top, left: left };
+      } else if (dir === 'v') {
+        return { top: top };
+      } else {
+        return { left: left };
+      }
     };
     var circle$ = this.$fromDOMEvent(selector, 'mousedown');
     var mousedown$ = this.mousedown$.map(function (e) { return e.event; });
@@ -3082,12 +3109,12 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
       .switchMap(untilMouseUp)
       .merge(mousedown$)
       .do(function (e) { return e.preventDefault(); })
-      .map(function (e) { return ({x: e.clientX, y: e.clientY}); })
+      .map(function (e) { return ({ x: e.clientX, y: e.clientY }); })
       .throttleTime(100)
       .map(this.calcProportion);
     return {
       pointerPos: change$
-        .startWith({left: 1, top: 0})
+        .startWith(extend({}, this.value, { left: 1, top: 0 }))
         .map(resultByDir)
         .do(function (res) { return this$1.$emit('input', res); })
     };
@@ -3099,7 +3126,7 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
       var r = this.$refs.bar.getBoundingClientRect();
       return {
         left: limit01((x - r.left) / r.width),
-        top:  limit01((y - r.top)  / r.height)
+        top: limit01((y - r.top) / r.height)
       };
     }
   }
@@ -3112,7 +3139,7 @@ var clsn$1 = function () {
   return index(names.map(function (n) { return styles[n]; }));
 };
 
-var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ctrl',{class:_vm.styles.paletteWrap,attrs:{"dir":"both"},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v;},expression:"model"}},[_c('div',{class:_vm.styles.palettePane,style:({background: _vm.bgcolor})},[_c('div',{class:_vm.styles.paletteWhite}),_c('div',{class:_vm.styles.paletteBlack})])])},staticRenderFns: [],
+var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ctrl',{class:_vm.styles.paletteWrap,staticStyle:{"margin":"0"},attrs:{"dir":"both"},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v;},expression:"model"}},[_c('div',{class:_vm.styles.palettePane,style:({background: _vm.bgcolor})},[_c('div',{class:_vm.styles.paletteWhite}),_c('div',{class:_vm.styles.paletteBlack})])])},staticRenderFns: [],
   name: 'v-color-saturation',
   props: {
     value: {
@@ -3139,7 +3166,287 @@ var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
   }
 };
 
-//  
+function rgb2hsv(rgb) {
+  var r = rgb[0],
+      g = rgb[1],
+      b = rgb[2],
+      min = Math.min(r, g, b),
+      max = Math.max(r, g, b),
+      delta = max - min,
+      h, s, v;
+
+  if (max == 0)
+    { s = 0; }
+  else
+    { s = (delta/max * 1000)/10; }
+
+  if (max == min)
+    { h = 0; }
+  else if (r == max)
+    { h = (g - b) / delta; }
+  else if (g == max)
+    { h = 2 + (b - r) / delta; }
+  else if (b == max)
+    { h = 4 + (r - g) / delta; }
+
+  h = Math.min(h * 60, 360);
+
+  if (h < 0)
+    { h += 360; }
+
+  v = ((max / 255) * 1000) / 10;
+
+  return [h, s, v];
+}
+
+var rgb2hsv_1 = rgb2hsv;
+
+function hex(hex) {
+  if (hex.length === 4) {
+    hex = '#' + hex.charAt(1) + hex.charAt(1) +
+      hex.charAt(2) + hex.charAt(2) + 
+      hex.charAt(3) + hex.charAt(3);
+  }
+  return [
+    parseInt(hex.substring(1,3), 16),
+    parseInt(hex.substring(3,5), 16),
+    parseInt(hex.substring(5,7), 16)
+  ];
+}
+
+var hex_1 = hex;
+
+function rgb2hsl(rgb) {
+  var r = rgb[0]/255,
+      g = rgb[1]/255,
+      b = rgb[2]/255,
+      min = Math.min(r, g, b),
+      max = Math.max(r, g, b),
+      delta = max - min,
+      h, s, l;
+
+  if (max == min)
+    { h = 0; }
+  else if (r == max)
+    { h = (g - b) / delta; }
+  else if (g == max)
+    { h = 2 + (b - r) / delta; }
+  else if (b == max)
+    { h = 4 + (r - g)/ delta; }
+
+  h = Math.min(h * 60, 360);
+
+  if (h < 0)
+    { h += 360; }
+
+  l = (min + max) / 2;
+
+  if (max == min)
+    { s = 0; }
+  else if (l <= 0.5)
+    { s = delta / (max + min); }
+  else
+    { s = delta / (2 - max - min); }
+
+  return [h, s * 100, l * 100];
+}
+
+var rgb2hsl_1 = rgb2hsl;
+
+function clamp$1(val, min, max) {
+  return Math.min(Math.max(val, min), max);
+}
+
+var clamp_1 = clamp$1;
+
+var clamp = clamp_1;
+
+function componentToHex(c) {
+  var value = Math.round(clamp(c, 0, 255));
+  var hex   = value.toString(16);
+
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgb2hex(rgb) {
+  return "#" + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
+}
+
+var rgb2hex_1 = rgb2hex;
+
+var hsl2hex = function (hsl) { return rgb2hex_1(hsl2rgb_1(hsl)); };
+
+var clsn$3 = function () {
+  var names = [], len = arguments.length;
+  while ( len-- ) names[ len ] = arguments[ len ];
+
+  return index(names.map(function (n) { return styles[n]; }));
+};
+
+var extend$1 = function (a) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  args.forEach(function (arg) {
+    if (arg && typeof arg === 'object') {
+      Object.keys(arg).forEach(function (k) { return (k in a) || (a[k] = arg[k]); });
+    }
+  });
+  return a;
+};
+var range = function (num, min, max) {
+  return Math.min(max, Math.max(min, +num));
+};
+
+var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.flexRow},[_c('div',{class:_vm.styles.formats},_vm._l((_vm.modes[_vm.mode]),function(v){return _c('div',{staticStyle:{"padding-left":"6px","width":"100%"}},[_c('div',{staticStyle:{"position":"relative"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.rgbhsla[v]),expression:"rgbhsla[v]"}],domProps:{"value":(_vm.rgbhsla[v])},on:{"change":function($event){_vm.onFieldChange(v, $event);},"input":function($event){if($event.target.composing){ return; }var $$exp = _vm.rgbhsla, $$idx = v;if (!Array.isArray($$exp)){_vm.rgbhsla[v]=$event.target.value;}else{$$exp.splice($$idx, 1, $event.target.value);}}}}),_c('span',[_vm._v(_vm._s(v))])])])})),_c('div',{class:_vm.styles.fmSwitch},[_c('div',{on:{"click":function($event){_vm.changeMode(+1);}}},[_c('svg',{attrs:{"viewBox":"0 0 24 24"}},[_c('path',{attrs:{"fill":"#333","d":"M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"}}),_c('path',{attrs:{"fill":"#333","d":"M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"}})])])])])},staticRenderFns: [],
+  name: 'v-color-fields',
+  props: {
+    prop: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    var ref = this;
+    var prop = ref.prop;
+    var rgbhsla = this.digestProp(prop);
+    return {
+      styles: {
+        flexRow: clsn$3('flex-row'),
+        formats: clsn$3('formats-inputs'),
+        fmSwitch: clsn$3('format-switch')
+      },
+      mode: 'hex',
+      rgbhsla: rgbhsla,
+      _rgbhsla: rgbhsla
+    };
+  },
+  computed: {
+    modes: function modes() {
+      var base = {
+        rgba: ['r', 'g', 'b', 'a'],
+        hsla: ['h', 's', 'l', 'a']
+      };
+      if (this.rgbhsla.a === 1) {
+        base.hex = ['hex'];
+      }
+      return base;
+    }
+  },
+  watch: {
+    prop: function prop(val) {
+      this.rgbhsla = this.digestProp(val);
+      this._rgbhsla = extend$1({}, this.rgbhsla);
+    }
+  },
+  methods: {
+    digestProp: function digestProp(prop) {
+      if (prop.a < 1 && this.mode === 'hex') {
+        this.mode = 'rgba';
+      }
+      return extend$1({}, prop);
+    },
+
+    computeVals: function computeVals() {
+      var mode = this.mode;
+      var rgbhsla = this.rgbhsla;
+      var vals = this.modes[mode].map(function (k) { return rgbhsla[k]; });
+
+      switch (mode) {
+        case 'hex':
+          var ref = hex_1(rgbhsla['hex']);
+      var _r = ref[0];
+      var _g = ref[1];
+      var _b = ref[2];
+          var ref$1 = rgb2hsl_1([_r, _g, _b]);
+      var _h = ref$1[0];
+      var _s = ref$1[1];
+      var _l = ref$1[2];
+          rgbhsla['r'] = Math.round(_r);
+          rgbhsla['g'] = Math.round(_g);
+          rgbhsla['b'] = Math.round(_b);
+          rgbhsla['h'] = Math.round(_h);
+          rgbhsla['s'] = Math.round(_s);
+          rgbhsla['l'] = Math.round(_l);
+          break;
+        case 'rgba':
+          var ref$2 = rgb2hsl_1(vals);
+      var h = ref$2[0];
+      var s = ref$2[1];
+      var l = ref$2[2];
+          rgbhsla['h'] = Math.round(h);
+          rgbhsla['s'] = Math.round(s);
+          rgbhsla['l'] = Math.round(l);
+          rgbhsla['hex'] = hsl2hex([h, s, l]);
+          break;
+        case 'hsla':
+          var ref$3 = hsl2rgb_1(vals);
+      var r = ref$3[0];
+      var g = ref$3[1];
+      var b = ref$3[2];
+          rgbhsla['r'] = Math.round(r);
+          rgbhsla['g'] = Math.round(g);
+          rgbhsla['b'] = Math.round(b);
+          rgbhsla['hex'] = rgb2hex_1([r, g, b]);
+          break;
+      }
+    },
+
+    onFieldChange: function onFieldChange(key, e) {
+      var val = e.target.value;
+
+      switch (key) {
+        case 'hex':
+          var match = val.match(/^\s*(#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3})/);
+          if (match) {
+            val = match[1].trim();
+          } else {
+            val = this._rgbhsla.hex;
+          }
+          break;
+
+        case 'a':
+          val = range(val, 0, 1);
+          break;
+
+        case 'r':
+        case 'g':
+        case 'b':
+          val = range(val, 0, 255);
+          break;
+
+        case 'h':
+          val = range(val, 0, 360);
+          break;
+
+        case 's':
+        case 'l':
+          val = range(val, 0, 100);
+          break;
+      }
+
+      this.rgbhsla[key] = val;
+      if (key !== 'a') {
+        this.computeVals();
+      }
+      this._rgbhsla = extend$1({}, this.rgbhsla);
+      var ref = this._rgbhsla;
+      var r = ref.r;
+      var g = ref.g;
+      var b = ref.b;
+      var a = ref.a;
+      this.$emit('change', rgb2hsv_1([r, g, b]).concat(a));
+    },
+
+    changeMode: function changeMode(incr) {
+      var modes = Object.keys(this.modes);
+      var index$$1 = modes.indexOf(this.mode);
+      var next = (index$$1 + incr) % modes.length;
+      this.mode = modes[next < 0 ? modes.length - 1 : next];
+    }
+  }
+};
+
 var clsn = function () {
   var names = [], len = arguments.length;
   while ( len-- ) names[ len ] = arguments[ len ];
@@ -3148,56 +3455,104 @@ var clsn = function () {
 };
 
 var nums2color = function (vals) { return vals.map(function (n) { return n | 0; }).join(','); };
+var float = function (num) { return parseFloat(num || 0); };
 
-var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{attrs:{"bgcolor":_vm.hueColor},model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.row},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview,style:({background: _vm.realTime})})]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}},[_c('div',{class:_vm.styles.alphaBand,style:({background: _vm.gradientAlpha})})])],1)])])],1)},staticRenderFns: [],
+var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{attrs:{"bgcolor":_vm.hueColor},model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.flexRow},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview},[_c('div',{style:({background: _vm.preview})})])]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}},[_c('div',{style:({background: _vm.gradientAlpha})})])],1)]),_c('fields',{attrs:{"prop":_vm.realtime},on:{"change":function($event){_vm.onFieldChange($event);}}})],1)],1)},staticRenderFns: [],
   name: 'v-color',
-  components: { saturation: saturation, ctrl: ctrl },
+  components: { saturation: saturation, ctrl: ctrl, fields: fields },
   data: function data() {
     return {
       styles: {
         container: clsn('container'),
-        realtime: clsn('preview'),
-        ctrlPane: clsn('ctrl-pane', 'layout-table'),
+        flexRow: clsn('flex-row'),
+        ctrlPane: clsn('ctrl-pane'),
         previewCon: clsn('layout-cell', 'preview-cell'),
         preview: clsn('preview-circle'),
-        barCon: clsn('bar-container', 'layout-cell'),
-        row: clsn('layout-row'),
-
+        barCon: clsn('bar-container'),
         hue: clsn('hue-bar'),
         alpha: clsn('alpha-bar'),
-        alphaBand: clsn('alpha-band')
+        formats: clsn('formats-inputs'),
+        fmSwitch: clsn('format-switch')
       },
-      mixed: {},
-      hue: {},
-      alpha: {}
+      mixed: {
+        left: 0,
+        top: 0
+      },
+      hue: {
+        left: 1
+      },
+      alpha: {
+        left: 1
+      }
     };
   },
   computed: {
-    hueColor: function hueColor() {
-      var hsl = [parseFloat(this.hue.left || 0) * 3.6, 100, 50];
-      return ("rgb(" + (nums2color(hsl2rgb_1(hsl))) + ")");
-    },
-    realTime: function realTime() {
-      var ref = this.rgbColor;
-      var raw = ref.raw;
-      var alpha = parseFloat(this.alpha.left || 0) / 100;
-      return ("rgba(" + raw + ", " + alpha + ")");
-    },
-    rgbColor: function rgbColor() {
+    realtime: function realtime() {
       var hsv = [
-        parseFloat(this.hue.left || 0) * 3.6,
-        parseFloat(this.mixed.left || 0),
-        100 - parseFloat(this.mixed.top || 0) ];
-      var raw = nums2color(hsv2rgb_1(hsv));
+        float(this.hue.left) * 3.6,
+        float(this.mixed.left),
+        -float(this.mixed.top) + 100
+      ];
+      var ref = hsv2rgb_1(hsv).map(function (i) { return i | 0; });
+      var r = ref[0];
+      var g = ref[1];
+      var b = ref[2];
+      var ref$1 = hsv2hsl_1(hsv).map(function (i) { return i | 0; });
+      var h = ref$1[0];
+      var s = ref$1[1];
+      var l = ref$1[2];
+      var a = float((float(this.alpha.left) / 100).toFixed(2));
+      var hex = '#' + [r, g, b].map(function (i) { return ("0" + (i.toString(16))).slice(-2); }).join('');
       return {
-        rgb: ("rgb(" + raw + ")"),
-        raw: raw
-      }
+        r: r,
+        g: g,
+        b: b,
+        h: h,
+        s: s,
+        l: l,
+        a: a,
+        hex: hex
+      };
+    },
+    preview: function preview() {
+      var ref = this.realtime;
+      var r = ref.r;
+      var g = ref.g;
+      var b = ref.b;
+      var a = ref.a;
+      return ("rgba(" + (r | 0) + ", " + (g | 0) + ", " + (b | 0) + ", " + a + ")");
+    },
+    hueColor: function hueColor() {
+      var hsl = [
+        float(this.hue.left) * 3.6,
+        100,
+        50
+      ];
+      var ref = hsl2rgb_1(hsl).map(function (i) { return i | 0; });
+      var r = ref[0];
+      var g = ref[1];
+      var b = ref[2];
+      return ("rgb(" + (nums2color([r, g, b])) + ")");
     },
     gradientAlpha: function gradientAlpha() {
-      var ref = this.rgbColor;
-      var raw = ref.raw;
-      return ("linear-gradient(to right, rgba(" + raw + ", 0) 0%, rgb(" + raw + ") 100%)");
+      var ref = this.realtime;
+      var r = ref.r;
+      var g = ref.g;
+      var b = ref.b;
+      var rgb = nums2color([r, g, b]);
+      return ("linear-gradient(to right, rgba(" + rgb + ", 0) 0%, rgb(" + rgb + ") 100%)");
+    }
+  },
+  methods: {
+    onFieldChange: function onFieldChange(hsva) {
+      var h = hsva[0];
+      var s = hsva[1];
+      var v = hsva[2];
+      var a = hsva[3];
+      this.hue.left = h / 3.6 + '%';
+      this.mixed.left = s + '%';
+      this.mixed.top = (100 - v) + '%';
+      this.alpha.left = a * 100 + '%';
     }
   }
 };
@@ -3703,7 +4058,7 @@ var AnonymousSubject = (function (_super) {
     return AnonymousSubject;
 }(Subject));
 
-VColorComponent$1.install =  function (Vue) {
+VColorComponent$1.install = function (Vue) {
   Vue.config.devtools = true;
   Vue.use(vueRx, {
     Observable: Observable_2,

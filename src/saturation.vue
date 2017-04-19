@@ -1,6 +1,7 @@
 <template lang="pug">
 ctrl(
   :class="styles.paletteWrap",
+  style="margin: 0"
   dir="both",
   v-model="model"
 )

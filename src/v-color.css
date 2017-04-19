@@ -5,19 +5,13 @@
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, .3), 0 4px 8px rgba(0, 0, 0, .3);
   font-family: Menlo;
+  -webkit-user-select: none;
+  user-select: none;
 }
-
-.layout-table {
-  display: table;
+.flex-row {
+  display: -webkit-box;
+  display: flex;
 }
-.layout-row {
-  display: table-row;
-}
-.layout-cell {
-  display: table-cell;
-  vertical-align: top;
-}
-
 
 .ctrl-bar {
   position: relative;
@@ -76,21 +70,84 @@
   width: 32px;
 }
 .preview-circle {
-  width: 20px;
-  height: 20px;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==") left center;
+}
+.preview-circle > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   border-radius: 50%;
 }
 
+.bar-container {
+  -webkit-box-flex: 1;
+  flex: 1;
+}
 .hue-bar {
   background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%);
 }
 .alpha-bar {
    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==") left center;
 }
-.alpha-band {
+.alpha-bar > div:first-child {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 10px;
+}
+
+.formats-inputs {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+.formats-inputs input {
+  width: 100%;
+  height: 21px;
+  font-size: 11px;
+  text-align: center;
+  color: rgb(51, 51, 51);
+  border-radius: 2px;
+  border: none;
+  box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;
+}
+.formats-inputs span {
+  display: block;
+  margin-top: 12px;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 11px;
+  color: rgb(150, 150, 150);
+  text-align: center;
+}
+.format-switch {
+  position: relative;
+  width: 32px;
+  text-align: right;
+}
+.format-switch > div {
+  position: relative;
+  margin-right: -4px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.format-switch > div > svg {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.format-switch > div > svg:hover {
+  border-color: rgb(238, 238, 238);
+  background: rgb(238, 238, 238)
 }

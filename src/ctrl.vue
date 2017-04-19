@@ -18,13 +18,21 @@ import 'rxjs/add/operator/do';
 import classnames from 'classnames';
 import styles from './v-color.css';
 const clsn = (...names) => classnames(names.map(n => styles[n]));
+const extend = (a, ...args) => {
+  args.forEach(arg => {
+    if (arg && typeof arg === 'object') {
+      Object.keys(arg).forEach(k => (k in a) || (a[k] = arg[k]));
+    }
+  });
+  return a;
+};
 
 const percent = num => `${num * 100}%`;
 const limit01 = num => Math.min(Math.max(num, 0), 1);
 const untilMouseUp = () => {
   return Observable
     .fromEvent(document, 'mousemove')
-    .takeUntil(Observable.fromEvent(document, 'mouseup'))
+    .takeUntil(Observable.fromEvent(document, 'mouseup'));
 };
 
 export default {
@@ -57,16 +65,16 @@ export default {
   subscriptions() {
     const selector = `.${clsn('ctrl-circle')}`;
     const resultByDir = (res) => {
-        const dir = this.dir;
-        const left = percent(res.left);
-        const top = percent(res.top);
-        if (dir === 'both') {
-          return { top, left };
-        } else if (dir === 'v') {
-          return { top };
-        } else {
-          return { left };
-        }
+      const dir = this.dir;
+      const left = percent(res.left);
+      const top = percent(res.top);
+      if (dir === 'both') {
+        return { top, left };
+      } else if (dir === 'v') {
+        return { top };
+      } else {
+        return { left };
+      }
     };
     const circle$ = this.$fromDOMEvent(selector, 'mousedown');
     const mousedown$ = this.mousedown$.map(e => e.event);
@@ -74,12 +82,12 @@ export default {
       .switchMap(untilMouseUp)
       .merge(mousedown$)
       .do(e => e.preventDefault())
-      .map(e => ({x: e.clientX, y: e.clientY}))
+      .map(e => ({ x: e.clientX, y: e.clientY }))
       .throttleTime(100)
       .map(this.calcProportion);
     return {
       pointerPos: change$
-        .startWith({left: 1, top: 0})
+        .startWith(extend({}, this.value, { left: 1, top: 0 }))
         .map(resultByDir)
         .do(res => this.$emit('input', res))
     };
@@ -90,7 +98,7 @@ export default {
       const r = this.$refs.bar.getBoundingClientRect();
       return {
         left: limit01((x - r.left) / r.width),
-        top:  limit01((y - r.top)  / r.height)
+        top: limit01((y - r.top) / r.height)
       };
     }
   }

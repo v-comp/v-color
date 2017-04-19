@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 
-VColorComponent.install =  Vue => {
+VColorComponent.install = Vue => {
   Vue.config.devtools = true;
   Vue.use(VueRx, {
     Observable,

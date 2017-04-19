@@ -13,6 +13,8 @@
     "dist"
   ],
   "scripts": {
+    "precommit": "npm run lint",
+    "lint": "eslint ./src/*.js ./src/*.vue",
     "server": "browser-sync start --server --reload-delay 1 --files \"index.html, ./dist/**\"",
     "build:watch": "cross-env NODE_ENV=development rollup -c rollup.config.js -w",
     "build:dev": "cross-env NODE_ENV=development rollup -c rollup.config.js",
@@ -23,7 +25,11 @@
     "browser-sync": "^2.18.8",
     "cross-env": "^3.1.4",
     "cssnano": "^3.10.0",
+    "eslint": "^3.19.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-vue": "^2.0.1",
     "http-server": "^0.9.0",
+    "husky": "^0.13.3",
     "npm-run-all": "^4.0.1",
     "postcss-modules": "^0.6.4",
     "rollup": "^0.41.4",
