@@ -13,6 +13,11 @@ div(:class="styles.flexRow")
         path(fill="#333", d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z")
 </template>
 <script>
+import {
+  clsn,
+  extend
+} from './utils';
+
 import rgb2hsv from 'pure-color/convert/rgb2hsv';
 import hex2rgb from 'pure-color/parse/hex';
 import hsl2rgb from 'pure-color/convert/hsl2rgb';
@@ -20,18 +25,6 @@ import rgb2hsl from 'pure-color/convert/rgb2hsl';
 import rgb2hex from 'pure-color/convert/rgb2hex';
 const hsl2hex = (hsl) => rgb2hex(hsl2rgb(hsl));
 
-import classnames from 'classnames';
-import styles from './v-color.css';
-const clsn = (...names) => classnames(names.map(n => styles[n]));
-
-const extend = (a, ...args) => {
-  args.forEach(arg => {
-    if (arg && typeof arg === 'object') {
-      Object.keys(arg).forEach(k => (k in a) || (a[k] = arg[k]));
-    }
-  });
-  return a;
-};
 const range = (num, min, max) => {
   return Math.min(max, Math.max(min, +num));
 };
@@ -53,7 +46,7 @@ export default {
         formats: clsn('formats-inputs'),
         fmSwitch: clsn('format-switch')
       },
-      mode: 'hex',
+      mode: 'rgba',
       rgbhsla,
       _rgbhsla: rgbhsla
     };
@@ -64,7 +57,7 @@ export default {
         rgba: ['r', 'g', 'b', 'a'],
         hsla: ['h', 's', 'l', 'a']
       };
-      if (this.rgbhsla.a === 1) {
+      if (+this.rgbhsla.a === 1) {
         base.hex = ['hex'];
       }
       return base;
@@ -128,6 +121,8 @@ export default {
           } else {
             val = this._rgbhsla.hex;
           }
+
+          this.rgbhsla['a'] = 1;
           break;
 
         case 'a':

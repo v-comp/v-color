@@ -11,10 +11,7 @@ ctrl(
 </template>
 
 <script>
-import classnames from 'classnames';
-import styles from './v-color.css';
-const clsn = (...names) => classnames(names.map(n => styles[n]));
-
+import { clsn } from './utils';
 import ctrl from './ctrl.vue';
 
 export default {
@@ -40,6 +37,9 @@ export default {
   watch: {
     model(val) {
       this.$emit('input', val);
+    },
+    value(val) {
+      this.model = val;
     }
   }
 };

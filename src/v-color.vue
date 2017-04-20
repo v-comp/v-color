@@ -11,19 +11,20 @@ div(:class="styles.container")
         ctrl(:class="styles.hue",   v-model="hue")
         ctrl(:class="styles.alpha", v-model="alpha")
           div(:style="{background: gradientAlpha}")
-    fields(:prop="realtime", @change="onFieldChange($event)")
+    fields(:prop="realtime", @change="digestHSVA($event)")
 </template>
 
 <script>
-import classnames from 'classnames';
-import styles from './v-color.css';
-const clsn = (...names) => classnames(names.map(n => styles[n]));
+import {
+  clsn,
+  parseColor
+} from './utils';
 
 import hsl2rgb from 'pure-color/convert/hsl2rgb';
 import hsv2rgb from 'pure-color/convert/hsv2rgb';
 import hsv2hsl from 'pure-color/convert/hsv2hsl';
 const nums2color = vals => vals.map(n => n | 0).join(',');
-const float = num => parseFloat(num || 0);
+const float = num => parseFloat(num) || 0;
 
 import saturation from './saturation.vue';
 import fields from './fields.vue';
@@ -32,7 +33,20 @@ import ctrl from './ctrl.vue';
 export default {
   name: 'v-color',
   components: { saturation, ctrl, fields },
+  props: {
+    value: {
+      type: String,
+      required: true
+    }
+  },
   data() {
+    const hsva = parseColor(this.value);
+    const {
+      hue,
+      mixed,
+      alpha
+    } = this._digest(hsva);
+
     return {
       styles: {
         container: clsn('container'),
@@ -46,22 +60,16 @@ export default {
         formats: clsn('formats-inputs'),
         fmSwitch: clsn('format-switch')
       },
-      mixed: {
-        left: 0,
-        top: 0
-      },
-      hue: {
-        left: 1
-      },
-      alpha: {
-        left: 1
-      }
+      hsva,
+      mixed,
+      hue,
+      alpha
     };
   },
   computed: {
     realtime() {
       const hsv = [
-        float(this.hue.left) * 3.6,
+        float(this.hue.left) * 3.6 || 0,
         float(this.mixed.left),
         -float(this.mixed.top) + 100
       ];
@@ -99,14 +107,45 @@ export default {
       return `linear-gradient(to right, rgba(${rgb}, 0) 0%, rgb(${rgb}) 100%)`;
     }
   },
-  methods: {
-    onFieldChange(hsva) {
-      const [h, s, v, a] = hsva;
-      this.hue.left = h / 3.6 + '%';
-      this.mixed.left = s + '%';
-      this.mixed.top = (100 - v) + '%';
-      this.alpha.left = a * 100 + '%';
+  watch: {
+    value(val) {
+      this.hsva = parseColor(val);
+      this.digestHSVA(this.hsva);
+    },
+    preview(val) {
+      this.$emit('input', val);
     }
+  },
+  methods: {
+    _digest(hsva) {
+      const [h, s, v, a] = hsva;
+      return {
+        hue: {
+          left: h / 3.6 + '%'
+        },
+        mixed: {
+          left: s + '%',
+          top: (100 - v) + '%'
+        },
+        alpha: {
+          left: a * 100 + '%'
+        }
+      };
+    },
+    digestHSVA(hsva) {
+      const {
+        hue,
+        mixed,
+        alpha
+      } = this._digest(hsva);
+
+      this.hue = hue;
+      this.mixed = mixed;
+      this.alpha = alpha;
+    }
+  },
+  created() {
+    this.digestHSVA(this.hsva);
   }
 };
 </script>

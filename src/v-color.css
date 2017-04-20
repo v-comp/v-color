@@ -4,7 +4,7 @@
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, .3), 0 4px 8px rgba(0, 0, 0, .3);
-  font-family: Menlo;
+  font-family: Menlo, Microsoft Yahei, sans-serif;
   -webkit-user-select: none;
   user-select: none;
 }
@@ -118,6 +118,9 @@
   border-radius: 2px;
   border: none;
   box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;
+}
+.formats-inputs input:focus {
+  outline: 0;
 }
 .formats-inputs span {
   display: block;

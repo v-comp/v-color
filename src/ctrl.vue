@@ -15,17 +15,7 @@ import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-import classnames from 'classnames';
-import styles from './v-color.css';
-const clsn = (...names) => classnames(names.map(n => styles[n]));
-const extend = (a, ...args) => {
-  args.forEach(arg => {
-    if (arg && typeof arg === 'object') {
-      Object.keys(arg).forEach(k => (k in a) || (a[k] = arg[k]));
-    }
-  });
-  return a;
-};
+import { clsn } from './utils';
 
 const percent = num => `${num * 100}%`;
 const limit01 = num => Math.min(Math.max(num, 0), 1);
@@ -87,7 +77,7 @@ export default {
       .map(this.calcProportion);
     return {
       pointerPos: change$
-        .startWith(extend({}, this.value, { left: 1, top: 0 }))
+        .startWith()
         .map(resultByDir)
         .do(res => this.$emit('input', res))
     };
@@ -100,6 +90,11 @@ export default {
         left: limit01((x - r.left) / r.width),
         top: limit01((y - r.top) / r.height)
       };
+    }
+  },
+  watch: {
+    value(val) {
+      this.pointerPos = val;
     }
   }
 };

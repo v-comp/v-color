@@ -21,6 +21,96 @@ function __$styleInject(css, returnValue) {
   return returnValue;
 }
 
+function hex(hex) {
+  if (hex.length === 4) {
+    hex = '#' + hex.charAt(1) + hex.charAt(1) +
+      hex.charAt(2) + hex.charAt(2) + 
+      hex.charAt(3) + hex.charAt(3);
+  }
+  return [
+    parseInt(hex.substring(1,3), 16),
+    parseInt(hex.substring(3,5), 16),
+    parseInt(hex.substring(5,7), 16)
+  ];
+}
+
+var hex_1 = hex;
+
+function hsl2rgb(hsl) {
+  var h = hsl[0] / 360,
+      s = hsl[1] / 100,
+      l = hsl[2] / 100,
+      t1, t2, t3, rgb, val;
+
+  if (s == 0) {
+    val = l * 255;
+    return [val, val, val];
+  }
+
+  if (l < 0.5)
+    { t2 = l * (1 + s); }
+  else
+    { t2 = l + s - l * s; }
+  t1 = 2 * l - t2;
+
+  rgb = [0, 0, 0];
+  for (var i = 0; i < 3; i++) {
+    t3 = h + 1 / 3 * - (i - 1);
+    t3 < 0 && t3++;
+    t3 > 1 && t3--;
+
+    if (6 * t3 < 1)
+      { val = t1 + (t2 - t1) * 6 * t3; }
+    else if (2 * t3 < 1)
+      { val = t2; }
+    else if (3 * t3 < 2)
+      { val = t1 + (t2 - t1) * (2 / 3 - t3) * 6; }
+    else
+      { val = t1; }
+
+    rgb[i] = val * 255;
+  }
+
+  return rgb;
+}
+
+var hsl2rgb_1 = hsl2rgb;
+
+function rgb2hsv(rgb) {
+  var r = rgb[0],
+      g = rgb[1],
+      b = rgb[2],
+      min = Math.min(r, g, b),
+      max = Math.max(r, g, b),
+      delta = max - min,
+      h, s, v;
+
+  if (max == 0)
+    { s = 0; }
+  else
+    { s = (delta/max * 1000)/10; }
+
+  if (max == min)
+    { h = 0; }
+  else if (r == max)
+    { h = (g - b) / delta; }
+  else if (g == max)
+    { h = 2 + (b - r) / delta; }
+  else if (b == max)
+    { h = 4 + (r - g) / delta; }
+
+  h = Math.min(h * 60, 360);
+
+  if (h < 0)
+    { h += 360; }
+
+  v = ((max / 255) * 1000) / 10;
+
+  return [h, s, v];
+}
+
+var rgb2hsv_1 = rgb2hsv;
+
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 
@@ -84,47 +174,66 @@ var index = createCommonjsModule(function (module) {
 }());
 });
 
-var styles = __$styleInject(".v-color__container___cDemu{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo;-webkit-user-select:none;user-select:none}.v-color__flex-row___ZbV3f{display:-webkit-box;display:flex}.v-color__ctrl-bar___o3FrJ{position:relative;height:10px;margin-bottom:8px}.v-color__ctrl-circle___NBVyI{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}.v-color__ctrl-circle-transparent___1SIXM{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}.v-color__saturation-wrap___3BKN5{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}.v-color__saturation-black___2vVMG,.v-color__saturation-pane___1hAf3,.v-color__saturation-white___JScnI{position:absolute;top:0;left:0;right:0;bottom:0}.v-color__saturation-white___JScnI{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.v-color__saturation-black___2vVMG{background:linear-gradient(0deg,#000,transparent)}.v-color__ctrl-pane___2Ee41{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}.v-color__preview-cell___2OGed{width:32px}.v-color__preview-circle___520Ph{position:relative;width:16px;height:16px;border-radius:50%;background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__preview-circle___520Ph>div{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%}.v-color__bar-container___1gnzs{-webkit-box-flex:1;flex:1}.v-color__hue-bar___6GDhc{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.v-color__alpha-bar___1fcGD{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__alpha-bar___1fcGD>div:first-child{position:absolute;left:0;top:0;width:100%;height:10px}.v-color__formats-inputs___2WXAY{display:-webkit-box;display:flex;-webkit-box-flex:1;flex:1}.v-color__formats-inputs___2WXAY input{width:100%;height:21px;font-size:11px;text-align:center;color:#333;border-radius:2px;border:none;box-shadow:inset 0 0 0 1px #dadada}.v-color__formats-inputs___2WXAY span{display:block;margin-top:12px;text-transform:uppercase;font-size:11px;line-height:11px;color:#969696;text-align:center}.v-color__format-switch___2gMlP{position:relative;width:32px;text-align:right}.v-color__format-switch___2gMlP>div{position:relative;margin-right:-4px;margin-top:12px;cursor:pointer}.v-color__format-switch___2gMlP>div>svg{width:24px;height:24px;border-radius:5px;background:transparent;border:1px solid transparent}.v-color__format-switch___2gMlP>div>svg:hover{border-color:#eee;background:#eee}",{"container":"v-color__container___cDemu","flex-row":"v-color__flex-row___ZbV3f","ctrl-bar":"v-color__ctrl-bar___o3FrJ","ctrl-circle":"v-color__ctrl-circle___NBVyI","ctrl-circle-transparent":"v-color__ctrl-circle-transparent___1SIXM","saturation-wrap":"v-color__saturation-wrap___3BKN5","saturation-pane":"v-color__saturation-pane___1hAf3","saturation-white":"v-color__saturation-white___JScnI","saturation-black":"v-color__saturation-black___2vVMG","ctrl-pane":"v-color__ctrl-pane___2Ee41","preview-cell":"v-color__preview-cell___2OGed","preview-circle":"v-color__preview-circle___520Ph","bar-container":"v-color__bar-container___1gnzs","hue-bar":"v-color__hue-bar___6GDhc","alpha-bar":"v-color__alpha-bar___1fcGD","formats-inputs":"v-color__formats-inputs___2WXAY","format-switch":"v-color__format-switch___2gMlP"});
+var styles = __$styleInject(".v-color__container___cDemu{box-sizing:initial;width:250px;background:#fff;border-radius:2px;box-shadow:0 0 2px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.3);font-family:Menlo,Microsoft Yahei,sans-serif;-webkit-user-select:none;user-select:none}.v-color__flex-row___ZbV3f{display:-webkit-box;display:flex}.v-color__ctrl-bar___o3FrJ{position:relative;height:10px;margin-bottom:8px}.v-color__ctrl-circle___NBVyI{position:absolute;left:100%;width:12px;height:12px;border-radius:50%;transform:translate(-6px,-1px);background-color:#f8f8f8;box-shadow:0 1px 4px 0 rgba(0,0,0,.368627);cursor:default}.v-color__ctrl-circle-transparent___1SIXM{background-color:transparent;transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px #fff,inset 0 0 1px 1px rgba(0,0,0,.3),0 0 1px 2px rgba(0,0,0,.4)}.v-color__saturation-wrap___3BKN5{width:100%;padding-bottom:55%;position:relative;border-radius:2px 2px 0 0;overflow:hidden}.v-color__saturation-black___2vVMG,.v-color__saturation-pane___1hAf3,.v-color__saturation-white___JScnI{position:absolute;top:0;left:0;right:0;bottom:0}.v-color__saturation-white___JScnI{background:linear-gradient(90deg,#fff,hsla(0,0%,100%,0))}.v-color__saturation-black___2vVMG{background:linear-gradient(0deg,#000,transparent)}.v-color__ctrl-pane___2Ee41{position:relative;width:100%;box-sizing:border-box;padding:16px 16px 12px}.v-color__preview-cell___2OGed{width:32px}.v-color__preview-circle___520Ph{position:relative;width:16px;height:16px;border-radius:50%;background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__preview-circle___520Ph>div{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%}.v-color__bar-container___1gnzs{-webkit-box-flex:1;flex:1}.v-color__hue-bar___6GDhc{background:linear-gradient(90deg,red,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)}.v-color__alpha-bar___1fcGD{background:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==\") 0}.v-color__alpha-bar___1fcGD>div:first-child{position:absolute;left:0;top:0;width:100%;height:10px}.v-color__formats-inputs___2WXAY{display:-webkit-box;display:flex;-webkit-box-flex:1;flex:1}.v-color__formats-inputs___2WXAY input{width:100%;height:21px;font-size:11px;text-align:center;color:#333;border-radius:2px;border:none;box-shadow:inset 0 0 0 1px #dadada}.v-color__formats-inputs___2WXAY input:focus{outline:0}.v-color__formats-inputs___2WXAY span{display:block;margin-top:12px;text-transform:uppercase;font-size:11px;line-height:11px;color:#969696;text-align:center}.v-color__format-switch___2gMlP{position:relative;width:32px;text-align:right}.v-color__format-switch___2gMlP>div{position:relative;margin-right:-4px;margin-top:12px;cursor:pointer}.v-color__format-switch___2gMlP>div>svg{width:24px;height:24px;border-radius:5px;background:transparent;border:1px solid transparent}.v-color__format-switch___2gMlP>div>svg:hover{border-color:#eee;background:#eee}",{"container":"v-color__container___cDemu","flex-row":"v-color__flex-row___ZbV3f","ctrl-bar":"v-color__ctrl-bar___o3FrJ","ctrl-circle":"v-color__ctrl-circle___NBVyI","ctrl-circle-transparent":"v-color__ctrl-circle-transparent___1SIXM","saturation-wrap":"v-color__saturation-wrap___3BKN5","saturation-pane":"v-color__saturation-pane___1hAf3","saturation-white":"v-color__saturation-white___JScnI","saturation-black":"v-color__saturation-black___2vVMG","ctrl-pane":"v-color__ctrl-pane___2Ee41","preview-cell":"v-color__preview-cell___2OGed","preview-circle":"v-color__preview-circle___520Ph","bar-container":"v-color__bar-container___1gnzs","hue-bar":"v-color__hue-bar___6GDhc","alpha-bar":"v-color__alpha-bar___1fcGD","formats-inputs":"v-color__formats-inputs___2WXAY","format-switch":"v-color__format-switch___2gMlP"});
 
-function hsl2rgb(hsl) {
-  var h = hsl[0] / 360,
-      s = hsl[1] / 100,
-      l = hsl[2] / 100,
-      t1, t2, t3, rgb, val;
+var clsn = function () {
+  var names = [], len = arguments.length;
+  while ( len-- ) names[ len ] = arguments[ len ];
 
-  if (s == 0) {
-    val = l * 255;
-    return [val, val, val];
+  return index(names.map(function (n) { return styles[n]; }));
+};
+
+var extend = function (a) {
+  var args = [], len = arguments.length - 1;
+  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
+
+  args.forEach(function (arg) {
+    if (arg && typeof arg === 'object') {
+      Object.keys(arg).forEach(function (k) { return (k in a) || (a[k] = arg[k]); });
+    }
+  });
+  return a;
+};
+
+var parseColor = function (color) {
+  var match = null;
+  var rgb = [255, 255, 255];
+  var alpha = 1;
+
+  match = color.match(/((#[a-fA-F0-9]{6})|(#[a-fA-F0-9]{3}))/);
+  if (match && match[1]) {
+    rgb = hex_1(match[1]);
   }
 
-  if (l < 0.5)
-    { t2 = l * (1 + s); }
-  else
-    { t2 = l + s - l * s; }
-  t1 = 2 * l - t2;
+  match = color.match(/rgba?\(([^)]+)\)/);
+  if (match && match[1]) {
+    var ref = match[1].split(/\s*,\s*/);
+    var r = ref[0]; if ( r === void 0 ) r = 0;
+    var g = ref[1]; if ( g === void 0 ) g = 0;
+    var b = ref[2]; if ( b === void 0 ) b = 0;
+    var a = ref[3]; if ( a === void 0 ) a = 1;
 
-  rgb = [0, 0, 0];
-  for (var i = 0; i < 3; i++) {
-    t3 = h + 1 / 3 * - (i - 1);
-    t3 < 0 && t3++;
-    t3 > 1 && t3--;
-
-    if (6 * t3 < 1)
-      { val = t1 + (t2 - t1) * 6 * t3; }
-    else if (2 * t3 < 1)
-      { val = t2; }
-    else if (3 * t3 < 2)
-      { val = t1 + (t2 - t1) * (2 / 3 - t3) * 6; }
-    else
-      { val = t1; }
-
-    rgb[i] = val * 255;
+    rgb = [+r || 0, +g || 0, +b || 0];
+    alpha = a > 1 ? 1 : +a;
   }
 
-  return rgb;
-}
+  match = color.match(/hsla?\(([^)]+)\)/);
+  if (match && match[1]) {
+    var ref$1 = match[1].split(/\s*,\s*/);
+    var h = ref$1[0]; if ( h === void 0 ) h = 0;
+    var s = ref$1[1]; if ( s === void 0 ) s = 0;
+    var l = ref$1[2]; if ( l === void 0 ) l = 0;
+    var a$1 = ref$1[3]; if ( a$1 === void 0 ) a$1 = 1;
+    rgb = hsl2rgb_1([
+      +h || 0,
+      parseFloat(s) / 100,
+      parseFloat(l) / 100
+    ]);
+    alpha = a$1 > 1 ? 1 : +a$1;
+  }
 
-var hsl2rgb_1 = hsl2rgb;
+  return rgb2hsv_1(rgb).concat(alpha);
+};
 
 function hsv2rgb(hsv) {
   var h = hsv[0] / 60,
@@ -185,21 +294,21 @@ exports.root = (typeof window == 'object' && window.window === window && window
 if (!exports.root) {
     throw new Error('RxJS could not find any global context (window, self, global)');
 }
-//# sourceMappingURL=root.js.map
+
 });
 
 function isFunction(x) {
     return typeof x === 'function';
 }
 var isFunction_2 = isFunction;
-//# sourceMappingURL=isFunction.js.map
+
 
 var isFunction_1$1 = {
 	isFunction: isFunction_2
 };
 
 var isArray_1$1 = Array.isArray || (function (x) { return x && typeof x.length === 'number'; });
-//# sourceMappingURL=isArray.js.map
+
 
 var isArray = {
 	isArray: isArray_1$1
@@ -209,14 +318,15 @@ function isObject(x) {
     return x != null && typeof x === 'object';
 }
 var isObject_2 = isObject;
-//# sourceMappingURL=isObject.js.map
+
 
 var isObject_1$1 = {
 	isObject: isObject_2
 };
 
+// typeof any so that it we don't have to cast when comparing a result to the error object
 var errorObject_1$2 = { e: {} };
-//# sourceMappingURL=errorObject.js.map
+
 
 var errorObject = {
 	errorObject: errorObject_1$2
@@ -239,7 +349,7 @@ function tryCatch(fn) {
 }
 var tryCatch_2 = tryCatch;
 
-//# sourceMappingURL=tryCatch.js.map
+
 
 var tryCatch_1$1 = {
 	tryCatch: tryCatch_2
@@ -268,7 +378,7 @@ var UnsubscriptionError = (function (_super) {
     return UnsubscriptionError;
 }(Error));
 var UnsubscriptionError_2 = UnsubscriptionError;
-//# sourceMappingURL=UnsubscriptionError.js.map
+
 
 var UnsubscriptionError_1$1 = {
 	UnsubscriptionError: UnsubscriptionError_2
@@ -467,7 +577,7 @@ var Subscription_2 = Subscription;
 function flattenUnsubscriptionErrors(errors) {
     return errors.reduce(function (errs, err) { return errs.concat((err instanceof UnsubscriptionError_1.UnsubscriptionError) ? err.errors : err); }, []);
 }
-//# sourceMappingURL=Subscription.js.map
+
 
 var Subscription_1$1 = {
 	Subscription: Subscription_2
@@ -479,7 +589,7 @@ var empty = {
     error: function (err) { throw err; },
     complete: function () { }
 };
-//# sourceMappingURL=Observer.js.map
+
 
 var Observer = {
 	empty: empty
@@ -495,7 +605,7 @@ exports.rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'f
  * @deprecated use rxSubscriber instead
  */
 exports.$$rxSubscriber = exports.rxSubscriber;
-//# sourceMappingURL=rxSubscriber.js.map
+
 });
 
 var __extends = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
@@ -758,7 +868,7 @@ var SafeSubscriber = (function (_super) {
     };
     return SafeSubscriber;
 }(Subscriber));
-//# sourceMappingURL=Subscriber.js.map
+
 
 var Subscriber_1$1 = {
 	Subscriber: Subscriber_2
@@ -782,7 +892,7 @@ function toSubscriber(nextOrObserver, error, complete) {
     return new Subscriber_1.Subscriber(nextOrObserver, error, complete);
 }
 var toSubscriber_2 = toSubscriber;
-//# sourceMappingURL=toSubscriber.js.map
+
 
 var toSubscriber_1$1 = {
 	toSubscriber: toSubscriber_2
@@ -814,7 +924,7 @@ exports.observable = getSymbolObservable(root_1.root);
  * @deprecated use observable instead
  */
 exports.$$observable = exports.observable;
-//# sourceMappingURL=observable.js.map
+
 });
 
 var root_1 = root;
@@ -957,7 +1067,7 @@ var Observable = (function () {
     return Observable;
 }());
 var Observable_2 = Observable;
-//# sourceMappingURL=Observable.js.map
+
 
 var Observable_1 = {
 	Observable: Observable_2
@@ -1103,7 +1213,7 @@ var FromEventObservable = (function (_super) {
     return FromEventObservable;
 }(Observable_1$3.Observable));
 var FromEventObservable_2 = FromEventObservable;
-//# sourceMappingURL=FromEventObservable.js.map
+
 
 var FromEventObservable_1$1 = {
 	FromEventObservable: FromEventObservable_2
@@ -1111,7 +1221,7 @@ var FromEventObservable_1$1 = {
 
 var FromEventObservable_1 = FromEventObservable_1$1;
 var fromEvent_1$1 = FromEventObservable_1.FromEventObservable.create;
-//# sourceMappingURL=fromEvent.js.map
+
 
 var fromEvent$2 = {
 	fromEvent: fromEvent_1$1
@@ -1120,7 +1230,6 @@ var fromEvent$2 = {
 var Observable_1$2 = Observable_1;
 var fromEvent_1 = fromEvent$2;
 Observable_1$2.Observable.fromEvent = fromEvent_1.fromEvent;
-//# sourceMappingURL=fromEvent.js.map
 
 var __extends$4 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1150,14 +1259,14 @@ var OuterSubscriber = (function (_super) {
     return OuterSubscriber;
 }(Subscriber_1$3.Subscriber));
 var OuterSubscriber_2 = OuterSubscriber;
-//# sourceMappingURL=OuterSubscriber.js.map
+
 
 var OuterSubscriber_1$1 = {
 	OuterSubscriber: OuterSubscriber_2
 };
 
 var isArrayLike_1$1 = (function (x) { return x && typeof x.length === 'number'; });
-//# sourceMappingURL=isArrayLike.js.map
+
 
 var isArrayLike = {
 	isArrayLike: isArrayLike_1$1
@@ -1167,7 +1276,7 @@ function isPromise(value) {
     return value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
 }
 var isPromise_2 = isPromise;
-//# sourceMappingURL=isPromise.js.map
+
 
 var isPromise_1$1 = {
 	isPromise: isPromise_2
@@ -1211,7 +1320,7 @@ exports.iterator = symbolIteratorPonyfill(root_1.root);
  * @deprecated use iterator instead
  */
 exports.$$iterator = exports.iterator;
-//# sourceMappingURL=iterator.js.map
+
 });
 
 var __extends$5 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
@@ -1248,7 +1357,7 @@ var InnerSubscriber = (function (_super) {
     return InnerSubscriber;
 }(Subscriber_1$4.Subscriber));
 var InnerSubscriber_2 = InnerSubscriber;
-//# sourceMappingURL=InnerSubscriber.js.map
+
 
 var InnerSubscriber_1$1 = {
 	InnerSubscriber: InnerSubscriber_2
@@ -1330,7 +1439,7 @@ function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     return null;
 }
 var subscribeToResult_2 = subscribeToResult;
-//# sourceMappingURL=subscribeToResult.js.map
+
 
 var subscribeToResult_1$1 = {
 	subscribeToResult: subscribeToResult_2
@@ -1474,7 +1583,7 @@ var SwitchMapSubscriber = (function (_super) {
     };
     return SwitchMapSubscriber;
 }(OuterSubscriber_1.OuterSubscriber));
-//# sourceMappingURL=switchMap.js.map
+
 
 var switchMap_1$1 = {
 	switchMap: switchMap_2
@@ -1483,7 +1592,6 @@ var switchMap_1$1 = {
 var Observable_1$4 = Observable_1;
 var switchMap_1 = switchMap_1$1;
 Observable_1$4.Observable.prototype.switchMap = switchMap_1.switchMap;
-//# sourceMappingURL=switchMap.js.map
 
 var __extends$6 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1558,7 +1666,7 @@ var TakeUntilSubscriber = (function (_super) {
     };
     return TakeUntilSubscriber;
 }(OuterSubscriber_1$3.OuterSubscriber));
-//# sourceMappingURL=takeUntil.js.map
+
 
 var takeUntil_1$1 = {
 	takeUntil: takeUntil_2
@@ -1567,7 +1675,6 @@ var takeUntil_1$1 = {
 var Observable_1$6 = Observable_1;
 var takeUntil_1 = takeUntil_1$1;
 Observable_1$6.Observable.prototype.takeUntil = takeUntil_1.takeUntil;
-//# sourceMappingURL=takeUntil.js.map
 
 var __extends$8 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1625,7 +1732,7 @@ var ScalarObservable = (function (_super) {
     return ScalarObservable;
 }(Observable_1$9.Observable));
 var ScalarObservable_2 = ScalarObservable;
-//# sourceMappingURL=ScalarObservable.js.map
+
 
 var ScalarObservable_1$2 = {
 	ScalarObservable: ScalarObservable_2
@@ -1710,7 +1817,7 @@ var EmptyObservable = (function (_super) {
     return EmptyObservable;
 }(Observable_1$10.Observable));
 var EmptyObservable_2 = EmptyObservable;
-//# sourceMappingURL=EmptyObservable.js.map
+
 
 var EmptyObservable_1$2 = {
 	EmptyObservable: EmptyObservable_2
@@ -1720,7 +1827,7 @@ function isScheduler(value) {
     return value && typeof value.schedule === 'function';
 }
 var isScheduler_2 = isScheduler;
-//# sourceMappingURL=isScheduler.js.map
+
 
 var isScheduler_1$2 = {
 	isScheduler: isScheduler_2
@@ -1848,7 +1955,7 @@ var ArrayObservable = (function (_super) {
     return ArrayObservable;
 }(Observable_1$8.Observable));
 var ArrayObservable_2 = ArrayObservable;
-//# sourceMappingURL=ArrayObservable.js.map
+
 
 var ArrayObservable_1$1 = {
 	ArrayObservable: ArrayObservable_2
@@ -1963,7 +2070,7 @@ var MergeAllSubscriber = (function (_super) {
     return MergeAllSubscriber;
 }(OuterSubscriber_1$4.OuterSubscriber));
 var MergeAllSubscriber_1 = MergeAllSubscriber;
-//# sourceMappingURL=mergeAll.js.map
+
 
 var mergeAll_1$1 = {
 	mergeAll: mergeAll_2,
@@ -2147,7 +2254,7 @@ function concatStatic() {
     return new ArrayObservable_1$3.ArrayObservable(observables, scheduler).lift(new mergeAll_1.MergeAllOperator(1));
 }
 var concatStatic_1 = concatStatic;
-//# sourceMappingURL=concat.js.map
+
 
 var concat_1$1 = {
 	concat: concat_2,
@@ -2200,7 +2307,7 @@ function startWith$2() {
     }
 }
 var startWith_2 = startWith$2;
-//# sourceMappingURL=startWith.js.map
+
 
 var startWith_1$1 = {
 	startWith: startWith_2
@@ -2209,7 +2316,6 @@ var startWith_1$1 = {
 var Observable_1$7 = Observable_1;
 var startWith_1 = startWith_1$1;
 Observable_1$7.Observable.prototype.startWith = startWith_1.startWith;
-//# sourceMappingURL=startWith.js.map
 
 var __extends$13 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -2253,7 +2359,7 @@ var Action = (function (_super) {
     return Action;
 }(Subscription_1$4.Subscription));
 var Action_2 = Action;
-//# sourceMappingURL=Action.js.map
+
 
 var Action_1$1 = {
 	Action: Action_2
@@ -2399,12 +2505,28 @@ var AsyncAction = (function (_super) {
     return AsyncAction;
 }(Action_1.Action));
 var AsyncAction_2 = AsyncAction;
-//# sourceMappingURL=AsyncAction.js.map
+
 
 var AsyncAction_1$1 = {
 	AsyncAction: AsyncAction_2
 };
 
+/**
+ * An execution context and a data structure to order tasks and schedule their
+ * execution. Provides a notion of (potentially virtual) time, through the
+ * `now()` getter method.
+ *
+ * Each unit of work in a Scheduler is called an {@link Action}.
+ *
+ * ```ts
+ * class Scheduler {
+ *   now(): number;
+ *   schedule(work, delay?, state?): Subscription;
+ * }
+ * ```
+ *
+ * @class Scheduler
+ */
 var Scheduler = (function () {
     function Scheduler(SchedulerAction, now) {
         if (now === void 0) { now = Scheduler.now; }
@@ -2436,7 +2558,7 @@ var Scheduler = (function () {
     return Scheduler;
 }());
 var Scheduler_2 = Scheduler;
-//# sourceMappingURL=Scheduler.js.map
+
 
 var Scheduler_1$1 = {
 	Scheduler: Scheduler_2
@@ -2491,7 +2613,7 @@ var AsyncScheduler = (function (_super) {
     return AsyncScheduler;
 }(Scheduler_1.Scheduler));
 var AsyncScheduler_2 = AsyncScheduler;
-//# sourceMappingURL=AsyncScheduler.js.map
+
 
 var AsyncScheduler_1$1 = {
 	AsyncScheduler: AsyncScheduler_2
@@ -2542,7 +2664,7 @@ var AsyncScheduler_1 = AsyncScheduler_1$1;
  * @owner Scheduler
  */
 var async_1$1 = new AsyncScheduler_1.AsyncScheduler(AsyncAction_1.AsyncAction);
-//# sourceMappingURL=async.js.map
+
 
 var async = {
 	async: async_1$1
@@ -2641,7 +2763,7 @@ function dispatchNext(arg) {
     var subscriber = arg.subscriber;
     subscriber.clearThrottle();
 }
-//# sourceMappingURL=throttleTime.js.map
+
 
 var throttleTime_1$1 = {
 	throttleTime: throttleTime_2
@@ -2650,7 +2772,6 @@ var throttleTime_1$1 = {
 var Observable_1$12 = Observable_1;
 var throttleTime_1 = throttleTime_1$1;
 Observable_1$12.Observable.prototype.throttleTime = throttleTime_1.throttleTime;
-//# sourceMappingURL=throttleTime.js.map
 
 var Observable_1$14 = Observable_1;
 var ArrayObservable_1$4 = ArrayObservable_1$1;
@@ -2799,7 +2920,7 @@ function mergeStatic() {
     return new ArrayObservable_1$4.ArrayObservable(observables, scheduler).lift(new mergeAll_1$3.MergeAllOperator(concurrent));
 }
 var mergeStatic_1 = mergeStatic;
-//# sourceMappingURL=merge.js.map
+
 
 var merge_1$1 = {
 	merge: merge_2,
@@ -2809,7 +2930,6 @@ var merge_1$1 = {
 var Observable_1$13 = Observable_1;
 var merge_1 = merge_1$1;
 Observable_1$13.Observable.prototype.merge = merge_1.merge;
-//# sourceMappingURL=merge.js.map
 
 var __extends$15 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -2896,7 +3016,7 @@ var MapSubscriber = (function (_super) {
     };
     return MapSubscriber;
 }(Subscriber_1$6.Subscriber));
-//# sourceMappingURL=map.js.map
+
 
 var map_1$1 = {
 	map: map_2,
@@ -2906,7 +3026,6 @@ var map_1$1 = {
 var Observable_1$15 = Observable_1;
 var map_1 = map_1$1;
 Observable_1$15.Observable.prototype.map = map_1.map;
-//# sourceMappingURL=map.js.map
 
 var __extends$16 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -3019,7 +3138,7 @@ var DoSubscriber = (function (_super) {
     };
     return DoSubscriber;
 }(Subscriber_1$7.Subscriber));
-//# sourceMappingURL=do.js.map
+
 
 var _do_1 = {
 	_do: _do_2
@@ -3029,25 +3148,6 @@ var Observable_1$16 = Observable_1;
 var do_1 = _do_1;
 Observable_1$16.Observable.prototype.do = do_1._do;
 Observable_1$16.Observable.prototype._do = do_1._do;
-//# sourceMappingURL=do.js.map
-
-var clsn$2 = function () {
-  var names = [], len = arguments.length;
-  while ( len-- ) names[ len ] = arguments[ len ];
-
-  return index(names.map(function (n) { return styles[n]; }));
-};
-var extend = function (a) {
-  var args = [], len = arguments.length - 1;
-  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
-
-  args.forEach(function (arg) {
-    if (arg && typeof arg === 'object') {
-      Object.keys(arg).forEach(function (k) { return (k in a) || (a[k] = arg[k]); });
-    }
-  });
-  return a;
-};
 
 var percent = function (num) { return ((num * 100) + "%"); };
 var limit01 = function (num) { return Math.min(Math.max(num, 0), 1); };
@@ -3075,8 +3175,8 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
   data: function data() {
     return {
       styles: {
-        bar: clsn$2('ctrl-bar'),
-        ctrl: clsn$2(
+        bar: clsn('ctrl-bar'),
+        ctrl: clsn(
           'ctrl-circle',
           this.dir === 'both' ? 'ctrl-circle-transparent' : ''
         )
@@ -3087,7 +3187,7 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
   subscriptions: function subscriptions() {
     var this$1 = this;
 
-    var selector = "." + (clsn$2('ctrl-circle'));
+    var selector = "." + (clsn('ctrl-circle'));
     var resultByDir = function (res) {
       var dir = this$1.dir;
       var left = percent(res.left);
@@ -3111,7 +3211,7 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
       .map(this.calcProportion);
     return {
       pointerPos: change$
-        .startWith(extend({}, this.value, { left: 1, top: 0 }))
+        .startWith()
         .map(resultByDir)
         .do(function (res) { return this$1.$emit('input', res); })
     };
@@ -3126,14 +3226,12 @@ var ctrl = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm
         top: limit01((y - r.top) / r.height)
       };
     }
+  },
+  watch: {
+    value: function value(val) {
+      this.pointerPos = val;
+    }
   }
-};
-
-var clsn$1 = function () {
-  var names = [], len = arguments.length;
-  while ( len-- ) names[ len ] = arguments[ len ];
-
-  return index(names.map(function (n) { return styles[n]; }));
 };
 
 var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ctrl',{class:_vm.styles.paletteWrap,staticStyle:{"margin":"0"},attrs:{"dir":"both"},model:{value:(_vm.model),callback:function ($$v) {_vm.model=$$v;},expression:"model"}},[_c('div',{class:_vm.styles.palettePane,style:({background: _vm.bgcolor})},[_c('div',{class:_vm.styles.paletteWhite}),_c('div',{class:_vm.styles.paletteBlack})])])},staticRenderFns: [],
@@ -3148,10 +3246,10 @@ var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
   data: function data() {
     return {
       styles: {
-        paletteWrap: clsn$1('saturation-wrap'),
-        palettePane: clsn$1('saturation-pane'),
-        paletteWhite: clsn$1('saturation-white'),
-        paletteBlack: clsn$1('saturation-black')
+        paletteWrap: clsn('saturation-wrap'),
+        palettePane: clsn('saturation-pane'),
+        paletteWhite: clsn('saturation-white'),
+        paletteBlack: clsn('saturation-black')
       },
       model: this.value
     };
@@ -3159,59 +3257,12 @@ var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
   watch: {
     model: function model(val) {
       this.$emit('input', val);
+    },
+    value: function value(val) {
+      this.model = val;
     }
   }
 };
-
-function rgb2hsv(rgb) {
-  var r = rgb[0],
-      g = rgb[1],
-      b = rgb[2],
-      min = Math.min(r, g, b),
-      max = Math.max(r, g, b),
-      delta = max - min,
-      h, s, v;
-
-  if (max == 0)
-    { s = 0; }
-  else
-    { s = (delta/max * 1000)/10; }
-
-  if (max == min)
-    { h = 0; }
-  else if (r == max)
-    { h = (g - b) / delta; }
-  else if (g == max)
-    { h = 2 + (b - r) / delta; }
-  else if (b == max)
-    { h = 4 + (r - g) / delta; }
-
-  h = Math.min(h * 60, 360);
-
-  if (h < 0)
-    { h += 360; }
-
-  v = ((max / 255) * 1000) / 10;
-
-  return [h, s, v];
-}
-
-var rgb2hsv_1 = rgb2hsv;
-
-function hex(hex) {
-  if (hex.length === 4) {
-    hex = '#' + hex.charAt(1) + hex.charAt(1) +
-      hex.charAt(2) + hex.charAt(2) + 
-      hex.charAt(3) + hex.charAt(3);
-  }
-  return [
-    parseInt(hex.substring(1,3), 16),
-    parseInt(hex.substring(3,5), 16),
-    parseInt(hex.substring(5,7), 16)
-  ];
-}
-
-var hex_1 = hex;
 
 function rgb2hsl(rgb) {
   var r = rgb[0]/255,
@@ -3273,24 +3324,6 @@ var rgb2hex_1 = rgb2hex;
 
 var hsl2hex = function (hsl) { return rgb2hex_1(hsl2rgb_1(hsl)); };
 
-var clsn$3 = function () {
-  var names = [], len = arguments.length;
-  while ( len-- ) names[ len ] = arguments[ len ];
-
-  return index(names.map(function (n) { return styles[n]; }));
-};
-
-var extend$1 = function (a) {
-  var args = [], len = arguments.length - 1;
-  while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
-
-  args.forEach(function (arg) {
-    if (arg && typeof arg === 'object') {
-      Object.keys(arg).forEach(function (k) { return (k in a) || (a[k] = arg[k]); });
-    }
-  });
-  return a;
-};
 var range = function (num, min, max) {
   return Math.min(max, Math.max(min, +num));
 };
@@ -3309,11 +3342,11 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
     var rgbhsla = this.digestProp(prop);
     return {
       styles: {
-        flexRow: clsn$3('flex-row'),
-        formats: clsn$3('formats-inputs'),
-        fmSwitch: clsn$3('format-switch')
+        flexRow: clsn('flex-row'),
+        formats: clsn('formats-inputs'),
+        fmSwitch: clsn('format-switch')
       },
-      mode: 'hex',
+      mode: 'rgba',
       rgbhsla: rgbhsla,
       _rgbhsla: rgbhsla
     };
@@ -3324,7 +3357,7 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
         rgba: ['r', 'g', 'b', 'a'],
         hsla: ['h', 's', 'l', 'a']
       };
-      if (this.rgbhsla.a === 1) {
+      if (+this.rgbhsla.a === 1) {
         base.hex = ['hex'];
       }
       return base;
@@ -3333,7 +3366,7 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
   watch: {
     prop: function prop(val) {
       this.rgbhsla = this.digestProp(val);
-      this._rgbhsla = extend$1({}, this.rgbhsla);
+      this._rgbhsla = extend({}, this.rgbhsla);
     }
   },
   methods: {
@@ -3341,7 +3374,7 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
       if (prop.a < 1 && this.mode === 'hex') {
         this.mode = 'rgba';
       }
-      return extend$1({}, prop);
+      return extend({}, prop);
     },
 
     computeVals: function computeVals() {
@@ -3400,6 +3433,8 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
           } else {
             val = this._rgbhsla.hex;
           }
+
+          this.rgbhsla['a'] = 1;
           break;
 
         case 'a':
@@ -3426,7 +3461,7 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
       if (key !== 'a') {
         this.computeVals();
       }
-      this._rgbhsla = extend$1({}, this.rgbhsla);
+      this._rgbhsla = extend({}, this.rgbhsla);
       var ref = this._rgbhsla;
       var r = ref.r;
       var g = ref.g;
@@ -3437,27 +3472,32 @@ var fields = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
 
     changeMode: function changeMode(incr) {
       var modes = Object.keys(this.modes);
-      var index$$1 = modes.indexOf(this.mode);
-      var next = (index$$1 + incr) % modes.length;
+      var index = modes.indexOf(this.mode);
+      var next = (index + incr) % modes.length;
       this.mode = modes[next < 0 ? modes.length - 1 : next];
     }
   }
 };
 
-var clsn = function () {
-  var names = [], len = arguments.length;
-  while ( len-- ) names[ len ] = arguments[ len ];
-
-  return index(names.map(function (n) { return styles[n]; }));
-};
-
 var nums2color = function (vals) { return vals.map(function (n) { return n | 0; }).join(','); };
-var float = function (num) { return parseFloat(num || 0); };
+var float = function (num) { return parseFloat(num) || 0; };
 
-var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{attrs:{"bgcolor":_vm.hueColor},model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.flexRow},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview},[_c('div',{style:({background: _vm.preview})})])]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}},[_c('div',{style:({background: _vm.gradientAlpha})})])],1)]),_c('fields',{attrs:{"prop":_vm.realtime},on:{"change":function($event){_vm.onFieldChange($event);}}})],1)],1)},staticRenderFns: [],
+var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.styles.container},[_c('saturation',{attrs:{"bgcolor":_vm.hueColor},model:{value:(_vm.mixed),callback:function ($$v) {_vm.mixed=$$v;},expression:"mixed"}}),_c('div',{class:_vm.styles.ctrlPane},[_c('div',{class:_vm.styles.flexRow},[_c('div',{class:_vm.styles.previewCon},[_c('div',{class:_vm.styles.preview},[_c('div',{style:({background: _vm.preview})})])]),_c('div',{class:_vm.styles.barCon},[_c('ctrl',{class:_vm.styles.hue,model:{value:(_vm.hue),callback:function ($$v) {_vm.hue=$$v;},expression:"hue"}}),_c('ctrl',{class:_vm.styles.alpha,model:{value:(_vm.alpha),callback:function ($$v) {_vm.alpha=$$v;},expression:"alpha"}},[_c('div',{style:({background: _vm.gradientAlpha})})])],1)]),_c('fields',{attrs:{"prop":_vm.realtime},on:{"change":function($event){_vm.digestHSVA($event);}}})],1)],1)},staticRenderFns: [],
   name: 'v-color',
   components: { saturation: saturation, ctrl: ctrl, fields: fields },
+  props: {
+    value: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
+    var hsva = parseColor(this.value);
+    var ref = this._digest(hsva);
+    var hue = ref.hue;
+    var mixed = ref.mixed;
+    var alpha = ref.alpha;
+
     return {
       styles: {
         container: clsn('container'),
@@ -3471,22 +3511,16 @@ var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createEleme
         formats: clsn('formats-inputs'),
         fmSwitch: clsn('format-switch')
       },
-      mixed: {
-        left: 0,
-        top: 0
-      },
-      hue: {
-        left: 1
-      },
-      alpha: {
-        left: 1
-      }
+      hsva: hsva,
+      mixed: mixed,
+      hue: hue,
+      alpha: alpha
     };
   },
   computed: {
     realtime: function realtime() {
       var hsv = [
-        float(this.hue.left) * 3.6,
+        float(this.hue.left) * 3.6 || 0,
         float(this.mixed.left),
         -float(this.mixed.top) + 100
       ];
@@ -3540,17 +3574,47 @@ var VColorComponent$1 = {render: function(){var _vm=this;var _h=_vm.$createEleme
       return ("linear-gradient(to right, rgba(" + rgb + ", 0) 0%, rgb(" + rgb + ") 100%)");
     }
   },
+  watch: {
+    value: function value(val) {
+      this.hsva = parseColor(val);
+      this.digestHSVA(this.hsva);
+    },
+    preview: function preview(val) {
+      this.$emit('input', val);
+    }
+  },
   methods: {
-    onFieldChange: function onFieldChange(hsva) {
+    _digest: function _digest(hsva) {
       var h = hsva[0];
       var s = hsva[1];
       var v = hsva[2];
       var a = hsva[3];
-      this.hue.left = h / 3.6 + '%';
-      this.mixed.left = s + '%';
-      this.mixed.top = (100 - v) + '%';
-      this.alpha.left = a * 100 + '%';
+      return {
+        hue: {
+          left: h / 3.6 + '%'
+        },
+        mixed: {
+          left: s + '%',
+          top: (100 - v) + '%'
+        },
+        alpha: {
+          left: a * 100 + '%'
+        }
+      };
+    },
+    digestHSVA: function digestHSVA(hsva) {
+      var ref = this._digest(hsva);
+      var hue = ref.hue;
+      var mixed = ref.mixed;
+      var alpha = ref.alpha;
+
+      this.hue = hue;
+      this.mixed = mixed;
+      this.alpha = alpha;
     }
+  },
+  created: function created() {
+    this.digestHSVA(this.hsva);
   }
 };
 
@@ -3840,7 +3904,7 @@ var ObjectUnsubscribedError = (function (_super) {
     return ObjectUnsubscribedError;
 }(Error));
 var ObjectUnsubscribedError_2 = ObjectUnsubscribedError;
-//# sourceMappingURL=ObjectUnsubscribedError.js.map
+
 
 var ObjectUnsubscribedError_1$1 = {
 	ObjectUnsubscribedError: ObjectUnsubscribedError_2
@@ -3884,7 +3948,7 @@ var SubjectSubscription = (function (_super) {
     return SubjectSubscription;
 }(Subscription_1$6.Subscription));
 var SubjectSubscription_2 = SubjectSubscription;
-//# sourceMappingURL=SubjectSubscription.js.map
+
 
 var SubjectSubscription_1$1 = {
 	SubjectSubscription: SubjectSubscription_2
@@ -3912,6 +3976,9 @@ var SubjectSubscriber = (function (_super) {
     }
     return SubjectSubscriber;
 }(Subscriber_1$8.Subscriber));
+/**
+ * @class Subject<T>
+ */
 var Subject = (function (_super) {
     __extends$17(Subject, _super);
     function Subject() {
@@ -4064,13 +4131,12 @@ VColorComponent$1.install = function (Vue) {
 
 window.Vue.use(VColorComponent$1);
 
-// logic of your demo here...
-new window.Vue({
+window.vm = new window.Vue({
   el: '#app',
-  template: '<v-color :text="text"></v-color>',
+  template: '<v-color v-model="color"></v-color>',
   data: function data() {
     return {
-      text: 'Hello World'
+      color: '#f00'
     };
   }
 });
