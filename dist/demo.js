@@ -294,21 +294,21 @@ exports.root = (typeof window == 'object' && window.window === window && window
 if (!exports.root) {
     throw new Error('RxJS could not find any global context (window, self, global)');
 }
-
+//# sourceMappingURL=root.js.map
 });
 
 function isFunction(x) {
     return typeof x === 'function';
 }
 var isFunction_2 = isFunction;
-
+//# sourceMappingURL=isFunction.js.map
 
 var isFunction_1$1 = {
 	isFunction: isFunction_2
 };
 
 var isArray_1$1 = Array.isArray || (function (x) { return x && typeof x.length === 'number'; });
-
+//# sourceMappingURL=isArray.js.map
 
 var isArray = {
 	isArray: isArray_1$1
@@ -318,15 +318,14 @@ function isObject(x) {
     return x != null && typeof x === 'object';
 }
 var isObject_2 = isObject;
-
+//# sourceMappingURL=isObject.js.map
 
 var isObject_1$1 = {
 	isObject: isObject_2
 };
 
-// typeof any so that it we don't have to cast when comparing a result to the error object
 var errorObject_1$2 = { e: {} };
-
+//# sourceMappingURL=errorObject.js.map
 
 var errorObject = {
 	errorObject: errorObject_1$2
@@ -349,7 +348,7 @@ function tryCatch(fn) {
 }
 var tryCatch_2 = tryCatch;
 
-
+//# sourceMappingURL=tryCatch.js.map
 
 var tryCatch_1$1 = {
 	tryCatch: tryCatch_2
@@ -378,7 +377,7 @@ var UnsubscriptionError = (function (_super) {
     return UnsubscriptionError;
 }(Error));
 var UnsubscriptionError_2 = UnsubscriptionError;
-
+//# sourceMappingURL=UnsubscriptionError.js.map
 
 var UnsubscriptionError_1$1 = {
 	UnsubscriptionError: UnsubscriptionError_2
@@ -577,7 +576,7 @@ var Subscription_2 = Subscription;
 function flattenUnsubscriptionErrors(errors) {
     return errors.reduce(function (errs, err) { return errs.concat((err instanceof UnsubscriptionError_1.UnsubscriptionError) ? err.errors : err); }, []);
 }
-
+//# sourceMappingURL=Subscription.js.map
 
 var Subscription_1$1 = {
 	Subscription: Subscription_2
@@ -589,7 +588,7 @@ var empty = {
     error: function (err) { throw err; },
     complete: function () { }
 };
-
+//# sourceMappingURL=Observer.js.map
 
 var Observer = {
 	empty: empty
@@ -605,7 +604,7 @@ exports.rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'f
  * @deprecated use rxSubscriber instead
  */
 exports.$$rxSubscriber = exports.rxSubscriber;
-
+//# sourceMappingURL=rxSubscriber.js.map
 });
 
 var __extends = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
@@ -868,7 +867,7 @@ var SafeSubscriber = (function (_super) {
     };
     return SafeSubscriber;
 }(Subscriber));
-
+//# sourceMappingURL=Subscriber.js.map
 
 var Subscriber_1$1 = {
 	Subscriber: Subscriber_2
@@ -892,7 +891,7 @@ function toSubscriber(nextOrObserver, error, complete) {
     return new Subscriber_1.Subscriber(nextOrObserver, error, complete);
 }
 var toSubscriber_2 = toSubscriber;
-
+//# sourceMappingURL=toSubscriber.js.map
 
 var toSubscriber_1$1 = {
 	toSubscriber: toSubscriber_2
@@ -924,7 +923,7 @@ exports.observable = getSymbolObservable(root_1.root);
  * @deprecated use observable instead
  */
 exports.$$observable = exports.observable;
-
+//# sourceMappingURL=observable.js.map
 });
 
 var root_1 = root;
@@ -1067,7 +1066,7 @@ var Observable = (function () {
     return Observable;
 }());
 var Observable_2 = Observable;
-
+//# sourceMappingURL=Observable.js.map
 
 var Observable_1 = {
 	Observable: Observable_2
@@ -1213,7 +1212,7 @@ var FromEventObservable = (function (_super) {
     return FromEventObservable;
 }(Observable_1$3.Observable));
 var FromEventObservable_2 = FromEventObservable;
-
+//# sourceMappingURL=FromEventObservable.js.map
 
 var FromEventObservable_1$1 = {
 	FromEventObservable: FromEventObservable_2
@@ -1221,7 +1220,7 @@ var FromEventObservable_1$1 = {
 
 var FromEventObservable_1 = FromEventObservable_1$1;
 var fromEvent_1$1 = FromEventObservable_1.FromEventObservable.create;
-
+//# sourceMappingURL=fromEvent.js.map
 
 var fromEvent$2 = {
 	fromEvent: fromEvent_1$1
@@ -1230,6 +1229,7 @@ var fromEvent$2 = {
 var Observable_1$2 = Observable_1;
 var fromEvent_1 = fromEvent$2;
 Observable_1$2.Observable.fromEvent = fromEvent_1.fromEvent;
+//# sourceMappingURL=fromEvent.js.map
 
 var __extends$4 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1259,14 +1259,14 @@ var OuterSubscriber = (function (_super) {
     return OuterSubscriber;
 }(Subscriber_1$3.Subscriber));
 var OuterSubscriber_2 = OuterSubscriber;
-
+//# sourceMappingURL=OuterSubscriber.js.map
 
 var OuterSubscriber_1$1 = {
 	OuterSubscriber: OuterSubscriber_2
 };
 
 var isArrayLike_1$1 = (function (x) { return x && typeof x.length === 'number'; });
-
+//# sourceMappingURL=isArrayLike.js.map
 
 var isArrayLike = {
 	isArrayLike: isArrayLike_1$1
@@ -1276,7 +1276,7 @@ function isPromise(value) {
     return value && typeof value.subscribe !== 'function' && typeof value.then === 'function';
 }
 var isPromise_2 = isPromise;
-
+//# sourceMappingURL=isPromise.js.map
 
 var isPromise_1$1 = {
 	isPromise: isPromise_2
@@ -1320,7 +1320,7 @@ exports.iterator = symbolIteratorPonyfill(root_1.root);
  * @deprecated use iterator instead
  */
 exports.$$iterator = exports.iterator;
-
+//# sourceMappingURL=iterator.js.map
 });
 
 var __extends$5 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
@@ -1357,7 +1357,7 @@ var InnerSubscriber = (function (_super) {
     return InnerSubscriber;
 }(Subscriber_1$4.Subscriber));
 var InnerSubscriber_2 = InnerSubscriber;
-
+//# sourceMappingURL=InnerSubscriber.js.map
 
 var InnerSubscriber_1$1 = {
 	InnerSubscriber: InnerSubscriber_2
@@ -1439,7 +1439,7 @@ function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     return null;
 }
 var subscribeToResult_2 = subscribeToResult;
-
+//# sourceMappingURL=subscribeToResult.js.map
 
 var subscribeToResult_1$1 = {
 	subscribeToResult: subscribeToResult_2
@@ -1583,7 +1583,7 @@ var SwitchMapSubscriber = (function (_super) {
     };
     return SwitchMapSubscriber;
 }(OuterSubscriber_1.OuterSubscriber));
-
+//# sourceMappingURL=switchMap.js.map
 
 var switchMap_1$1 = {
 	switchMap: switchMap_2
@@ -1592,6 +1592,7 @@ var switchMap_1$1 = {
 var Observable_1$4 = Observable_1;
 var switchMap_1 = switchMap_1$1;
 Observable_1$4.Observable.prototype.switchMap = switchMap_1.switchMap;
+//# sourceMappingURL=switchMap.js.map
 
 var __extends$6 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1666,7 +1667,7 @@ var TakeUntilSubscriber = (function (_super) {
     };
     return TakeUntilSubscriber;
 }(OuterSubscriber_1$3.OuterSubscriber));
-
+//# sourceMappingURL=takeUntil.js.map
 
 var takeUntil_1$1 = {
 	takeUntil: takeUntil_2
@@ -1675,6 +1676,7 @@ var takeUntil_1$1 = {
 var Observable_1$6 = Observable_1;
 var takeUntil_1 = takeUntil_1$1;
 Observable_1$6.Observable.prototype.takeUntil = takeUntil_1.takeUntil;
+//# sourceMappingURL=takeUntil.js.map
 
 var __extends$8 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -1732,7 +1734,7 @@ var ScalarObservable = (function (_super) {
     return ScalarObservable;
 }(Observable_1$9.Observable));
 var ScalarObservable_2 = ScalarObservable;
-
+//# sourceMappingURL=ScalarObservable.js.map
 
 var ScalarObservable_1$2 = {
 	ScalarObservable: ScalarObservable_2
@@ -1817,7 +1819,7 @@ var EmptyObservable = (function (_super) {
     return EmptyObservable;
 }(Observable_1$10.Observable));
 var EmptyObservable_2 = EmptyObservable;
-
+//# sourceMappingURL=EmptyObservable.js.map
 
 var EmptyObservable_1$2 = {
 	EmptyObservable: EmptyObservable_2
@@ -1827,7 +1829,7 @@ function isScheduler(value) {
     return value && typeof value.schedule === 'function';
 }
 var isScheduler_2 = isScheduler;
-
+//# sourceMappingURL=isScheduler.js.map
 
 var isScheduler_1$2 = {
 	isScheduler: isScheduler_2
@@ -1955,7 +1957,7 @@ var ArrayObservable = (function (_super) {
     return ArrayObservable;
 }(Observable_1$8.Observable));
 var ArrayObservable_2 = ArrayObservable;
-
+//# sourceMappingURL=ArrayObservable.js.map
 
 var ArrayObservable_1$1 = {
 	ArrayObservable: ArrayObservable_2
@@ -2070,7 +2072,7 @@ var MergeAllSubscriber = (function (_super) {
     return MergeAllSubscriber;
 }(OuterSubscriber_1$4.OuterSubscriber));
 var MergeAllSubscriber_1 = MergeAllSubscriber;
-
+//# sourceMappingURL=mergeAll.js.map
 
 var mergeAll_1$1 = {
 	mergeAll: mergeAll_2,
@@ -2254,7 +2256,7 @@ function concatStatic() {
     return new ArrayObservable_1$3.ArrayObservable(observables, scheduler).lift(new mergeAll_1.MergeAllOperator(1));
 }
 var concatStatic_1 = concatStatic;
-
+//# sourceMappingURL=concat.js.map
 
 var concat_1$1 = {
 	concat: concat_2,
@@ -2307,7 +2309,7 @@ function startWith$2() {
     }
 }
 var startWith_2 = startWith$2;
-
+//# sourceMappingURL=startWith.js.map
 
 var startWith_1$1 = {
 	startWith: startWith_2
@@ -2316,6 +2318,7 @@ var startWith_1$1 = {
 var Observable_1$7 = Observable_1;
 var startWith_1 = startWith_1$1;
 Observable_1$7.Observable.prototype.startWith = startWith_1.startWith;
+//# sourceMappingURL=startWith.js.map
 
 var __extends$13 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -2359,7 +2362,7 @@ var Action = (function (_super) {
     return Action;
 }(Subscription_1$4.Subscription));
 var Action_2 = Action;
-
+//# sourceMappingURL=Action.js.map
 
 var Action_1$1 = {
 	Action: Action_2
@@ -2505,28 +2508,12 @@ var AsyncAction = (function (_super) {
     return AsyncAction;
 }(Action_1.Action));
 var AsyncAction_2 = AsyncAction;
-
+//# sourceMappingURL=AsyncAction.js.map
 
 var AsyncAction_1$1 = {
 	AsyncAction: AsyncAction_2
 };
 
-/**
- * An execution context and a data structure to order tasks and schedule their
- * execution. Provides a notion of (potentially virtual) time, through the
- * `now()` getter method.
- *
- * Each unit of work in a Scheduler is called an {@link Action}.
- *
- * ```ts
- * class Scheduler {
- *   now(): number;
- *   schedule(work, delay?, state?): Subscription;
- * }
- * ```
- *
- * @class Scheduler
- */
 var Scheduler = (function () {
     function Scheduler(SchedulerAction, now) {
         if (now === void 0) { now = Scheduler.now; }
@@ -2558,7 +2545,7 @@ var Scheduler = (function () {
     return Scheduler;
 }());
 var Scheduler_2 = Scheduler;
-
+//# sourceMappingURL=Scheduler.js.map
 
 var Scheduler_1$1 = {
 	Scheduler: Scheduler_2
@@ -2613,7 +2600,7 @@ var AsyncScheduler = (function (_super) {
     return AsyncScheduler;
 }(Scheduler_1.Scheduler));
 var AsyncScheduler_2 = AsyncScheduler;
-
+//# sourceMappingURL=AsyncScheduler.js.map
 
 var AsyncScheduler_1$1 = {
 	AsyncScheduler: AsyncScheduler_2
@@ -2664,7 +2651,7 @@ var AsyncScheduler_1 = AsyncScheduler_1$1;
  * @owner Scheduler
  */
 var async_1$1 = new AsyncScheduler_1.AsyncScheduler(AsyncAction_1.AsyncAction);
-
+//# sourceMappingURL=async.js.map
 
 var async = {
 	async: async_1$1
@@ -2763,7 +2750,7 @@ function dispatchNext(arg) {
     var subscriber = arg.subscriber;
     subscriber.clearThrottle();
 }
-
+//# sourceMappingURL=throttleTime.js.map
 
 var throttleTime_1$1 = {
 	throttleTime: throttleTime_2
@@ -2772,6 +2759,7 @@ var throttleTime_1$1 = {
 var Observable_1$12 = Observable_1;
 var throttleTime_1 = throttleTime_1$1;
 Observable_1$12.Observable.prototype.throttleTime = throttleTime_1.throttleTime;
+//# sourceMappingURL=throttleTime.js.map
 
 var Observable_1$14 = Observable_1;
 var ArrayObservable_1$4 = ArrayObservable_1$1;
@@ -2920,7 +2908,7 @@ function mergeStatic() {
     return new ArrayObservable_1$4.ArrayObservable(observables, scheduler).lift(new mergeAll_1$3.MergeAllOperator(concurrent));
 }
 var mergeStatic_1 = mergeStatic;
-
+//# sourceMappingURL=merge.js.map
 
 var merge_1$1 = {
 	merge: merge_2,
@@ -2930,6 +2918,7 @@ var merge_1$1 = {
 var Observable_1$13 = Observable_1;
 var merge_1 = merge_1$1;
 Observable_1$13.Observable.prototype.merge = merge_1.merge;
+//# sourceMappingURL=merge.js.map
 
 var __extends$15 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -3016,7 +3005,7 @@ var MapSubscriber = (function (_super) {
     };
     return MapSubscriber;
 }(Subscriber_1$6.Subscriber));
-
+//# sourceMappingURL=map.js.map
 
 var map_1$1 = {
 	map: map_2,
@@ -3026,6 +3015,7 @@ var map_1$1 = {
 var Observable_1$15 = Observable_1;
 var map_1 = map_1$1;
 Observable_1$15.Observable.prototype.map = map_1.map;
+//# sourceMappingURL=map.js.map
 
 var __extends$16 = (commonjsGlobal && commonjsGlobal.__extends) || function (d, b) {
     for (var p in b) { if (b.hasOwnProperty(p)) { d[p] = b[p]; } }
@@ -3138,7 +3128,7 @@ var DoSubscriber = (function (_super) {
     };
     return DoSubscriber;
 }(Subscriber_1$7.Subscriber));
-
+//# sourceMappingURL=do.js.map
 
 var _do_1 = {
 	_do: _do_2
@@ -3148,6 +3138,7 @@ var Observable_1$16 = Observable_1;
 var do_1 = _do_1;
 Observable_1$16.Observable.prototype.do = do_1._do;
 Observable_1$16.Observable.prototype._do = do_1._do;
+//# sourceMappingURL=do.js.map
 
 var percent = function (num) { return ((num * 100) + "%"); };
 var limit01 = function (num) { return Math.min(Math.max(num, 0), 1); };
@@ -3251,15 +3242,22 @@ var saturation = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
         paletteWhite: clsn('saturation-white'),
         paletteBlack: clsn('saturation-black')
       },
-      model: this.value
+      model: this.value,
+      external: false
     };
   },
   watch: {
     model: function model(val) {
-      this.$emit('input', val);
+      !this.external && this.$emit('input', val);
     },
     value: function value(val) {
+      var this$1 = this;
+
+      this.external = true;
       this.model = val;
+      this.$nextTick(function () {
+        this$1.external = false;
+      });
     }
   }
 };
@@ -3904,7 +3902,7 @@ var ObjectUnsubscribedError = (function (_super) {
     return ObjectUnsubscribedError;
 }(Error));
 var ObjectUnsubscribedError_2 = ObjectUnsubscribedError;
-
+//# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 var ObjectUnsubscribedError_1$1 = {
 	ObjectUnsubscribedError: ObjectUnsubscribedError_2
@@ -3948,7 +3946,7 @@ var SubjectSubscription = (function (_super) {
     return SubjectSubscription;
 }(Subscription_1$6.Subscription));
 var SubjectSubscription_2 = SubjectSubscription;
-
+//# sourceMappingURL=SubjectSubscription.js.map
 
 var SubjectSubscription_1$1 = {
 	SubjectSubscription: SubjectSubscription_2
@@ -3976,9 +3974,6 @@ var SubjectSubscriber = (function (_super) {
     }
     return SubjectSubscriber;
 }(Subscriber_1$8.Subscriber));
-/**
- * @class Subject<T>
- */
 var Subject = (function (_super) {
     __extends$17(Subject, _super);
     function Subject() {

@@ -31,15 +31,20 @@ export default {
         paletteWhite: clsn('saturation-white'),
         paletteBlack: clsn('saturation-black')
       },
-      model: this.value
+      model: this.value,
+      external: false
     };
   },
   watch: {
     model(val) {
-      this.$emit('input', val);
+      !this.external && this.$emit('input', val);
     },
     value(val) {
+      this.external = true;
       this.model = val;
+      this.$nextTick(() => {
+        this.external = false;
+      });
     }
   }
 };
