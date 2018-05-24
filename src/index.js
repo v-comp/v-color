@@ -1,18 +1,8 @@
-import VColorComponent from './v-color.vue';
-
-import VueRx from 'vue-rx';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
+import VColorComponent from './color-picker.vue'
 
 VColorComponent.install = Vue => {
-  Vue.config.devtools = true;
-  Vue.use(VueRx, {
-    Observable,
-    Subscription,
-    Subject
-  });
-  Vue.component(VColorComponent.name, VColorComponent);
-};
+  Vue.config.devtools = process.env.NODE_ENV !== 'production'
+  Vue.component(VColorComponent.name, VColorComponent)
+}
 
-export default VColorComponent;
+export default VColorComponent

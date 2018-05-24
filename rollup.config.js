@@ -1,59 +1,70 @@
-import buble from 'rollup-plugin-buble';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import vue from 'rollup-plugin-vue';
-import replace from 'rollup-plugin-replace';
-import postcss from 'rollup-plugin-postcss';
-import postcssModules from 'postcss-modules';
-import cssnano from 'cssnano';
-const cssExportMap = {};
+import buble from 'rollup-plugin-buble'
+import commonjs from 'rollup-plugin-commonjs'
+import resolve from 'rollup-plugin-node-resolve'
+import vue from 'rollup-plugin-vue'
+import replace from 'rollup-plugin-replace'
+import postcss from 'rollup-plugin-postcss'
 
-const isDEV = process.env.NODE_ENV !== 'production';
+const NODE_ENV = process.env.NODE_ENV
+const isDEV = NODE_ENV !== 'production'
+const plugins = [
+  replace({
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+  }),
+  postcss({
+    extract: false
+  }),
+  vue({
+    css: false,
+    compileTemplate: true
+  }),
+  commonjs(),
+  resolve({
+    jsnext: true,
+    main: true,
+    browser: true
+  }),
+  buble({
+    objectAssign: 'Object.assign'
+  })
+]
 
-export default {
-  entry: isDEV ? './src/demo.js' : './src/index.js',
-  targets: isDEV ? [
-    { dest: 'dist/demo.js', format: 'umd' }
-  ] : [
-    { dest: 'dist/v-color.js', format: 'umd' },
-    { dest: 'dist/v-color.common.js', format: 'cjs' },
-    { dest: 'dist/v-color.esm.js', format: 'es' }
-  ],
-  format: 'umd',
-  sourceMap: true,
-  useStrict: true,
-  moduleName: 'VColor',
-  plugins: [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    postcss({
-      plugins: [
-        postcssModules({
-          getJSON(id, exportTokens) {
-            cssExportMap[id] = exportTokens;
-          },
-          generateScopedName: '[name]__[local]___[hash:base64:5]'
-        }),
-        cssnano()
-      ],
-      getExport(id) {
-        return cssExportMap[id];
-      },
-      extensions: ['.css']
-    }),
-    vue({
-      css: false,
-      compileTemplate: true
-    }),
-    commonjs(),
-    resolve({
-      jsnext: true,
-      main: true,
-      browser: true
-    }),
-    buble({
-      objectAssign: 'Object.assign'
-    })
-  ]
-};
+let options = [
+  {
+    input: './src/index.js',
+    output: {
+      file: 'dist/index.esm.js',
+      format: 'es',
+      sourcemap: true,
+      strict: true
+    },
+    external: id => /^lodash/.test(id),
+    plugins
+  },
+  {
+    input: './src/index.js',
+    output: {
+      file: 'dist/index.js',
+      format: 'umd',
+      name: 'VColor',
+      sourcemap: true,
+      strict: true
+    },
+    plugins
+  }
+]
+
+if (isDEV) {
+  options = [{
+    input: './demo.js',
+    output: {
+      file: 'dist/demo.js',
+      format: 'umd',
+      sourcemap: true,
+      strict: true
+    },
+    plugins
+  }]
+}
+
+export default options
