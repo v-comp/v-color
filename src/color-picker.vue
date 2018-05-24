@@ -51,7 +51,7 @@
           <div style="padding-left: 6px; width: 100%;" v-for="k in colorModes[currentMode]" :key="k">
             <div style="position: relative;">
               <input
-                @input="handleInput(k, $event)"
+                @change="handleInput(k, $event)"
                 :value="colorModel[k]"
                 :type="constrains[k].type"
                 :maxlength="constrains[k].maxlength"
@@ -286,7 +286,9 @@ export default {
 
     emitChange () {
       const { alpha, hex, rgba, hsla } = this
-      const hexVal = alpha === 1 ? hex.slice(0, 7) : hex
+      const hexVal = simplifyHex(
+        alpha === 1 ? hex.slice(0, 7) : hex
+      )
 
       this.$emit('change', {
         rgba,
@@ -298,7 +300,11 @@ export default {
       // our model is up to date
       const [h, s, l] = hsla
       const [r, g, b] = rgba
-      objectAssign(this.colorModel, { r, g, b, h, s, l, hex: hexVal, a: alpha })
+      const shortHex = objectAssign(this.colorModel, {
+        r, g, b, h, s, l,
+        a: alpha,
+        hex: hexVal
+      })
     },
 
     changecurrentMode () {
@@ -310,12 +316,12 @@ export default {
     handleInput (type, event) {
       const { currentMode, colorModel } = this
       const { target: { value } } = event
-      let num = (type === 's' || type === 'l') ? parseFloat(value) : Number(value)
+      let num = Number(value)
       let changed = false
 
-      switch (isNaN(num) || type) {
+      switch (type) {
         case 'a':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 1)
             changed = true
           }
@@ -324,14 +330,14 @@ export default {
         case 'r':
         case 'g':
         case 'b':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 255) | 0
             changed = true
           }
           break
 
         case 'h':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 360) | 0
             changed = true
           }
@@ -340,6 +346,7 @@ export default {
         case 's':
         case 'l':
           if (value.slice(-1) === '%' && colorModel[type] !== value) {
+            num = parseFloat(value)
             colorModel[type] = `${ clamp(num, 0, 360) | 0 }%`
             changed = true
           }
@@ -348,7 +355,7 @@ export default {
         case 'hex':
           if (value[0] === '#') {
             if (colorModel[type] !== value && parse2rgb(value).every(i => !isNaN(i))) {
-              colorModel[type] = value
+              colorModel[type] = simplifyHex(value)
               changed = true
             }
           }
@@ -371,7 +378,7 @@ export default {
   },
 
   created () {
-    this.handleInput = debounce(this.handleInput.bind(this), 200)
+    this.handleInput = debounce(this.handleInput.bind(this), 50)
   }
 }
 
@@ -395,5 +402,9 @@ function getColorType (color) {
   }
 
   invariant(false, `${color} is not valid color value!`)
+}
+
+function simplifyHex (val) {
+  return val.replace(/#([0-9a-f])\1([0-9a-f])\2([0-9a-f])\3([0-9a-f]?)\4$/, '#$1$2$3$4')
 }
 </script>

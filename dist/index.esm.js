@@ -596,7 +596,7 @@ var colorModes = Object.freeze({
   hex: ['hex']
 });
 
-var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cp__wrapper"},[_c('v-ctrl',{attrs:{"direction":"vh","precision":2,"throttle":80},on:{"change":_vm.onSaturationChange}},[_c('div',{staticClass:"cp__v-ctrl cp__saturation"},[_c('div',{staticClass:"msk-hue",style:(_vm.styles.saturationPane)}),_vm._v(" "),_c('div',{staticClass:"msk-white"}),_vm._v(" "),_c('div',{staticClass:"msk-black"}),_vm._v(" "),_c('p',{staticClass:"cp__thumb",style:(_vm.styles.saturationThumb)})])]),_vm._v(" "),_c('div',{staticClass:"cp__ctrl-pane"},[_c('div',[_c('div',{staticClass:"cp__preview"},[_c('div',{style:(_vm.styles.preview)})]),_vm._v(" "),_c('div',{staticClass:"cp__tracks"},[_c('v-ctrl',{attrs:{"direction":"h","precision":2,"throttle":80},on:{"change":_vm.onHueChange}},[_c('div',{staticClass:"cp__v-ctrl cp__ctrl-bar cp__ctrl-hue"},[_c('div',{staticClass:"cp__thumb",style:(_vm.styles.hueThumb)})])]),_vm._v(" "),_c('v-ctrl',{attrs:{"direction":"h","precision":2,"throttle":80},on:{"change":_vm.onAlphaChange}},[_c('div',{staticClass:"cp__v-ctrl cp__ctrl-alpha"},[_c('div',{staticClass:"cp__thumb",style:(_vm.styles.alphaThumb)}),_vm._v(" "),_c('div',{staticClass:"cp__ctrl-bar",style:(_vm.styles.alphaTrack)})])])],1)]),_vm._v(" "),_c('div',{staticStyle:{"margin-top":"10px"}},[_c('div',{staticClass:"cp__fm-fields"},_vm._l((_vm.colorModes[_vm.currentMode]),function(k){return _c('div',{key:k,staticStyle:{"padding-left":"6px","width":"100%"}},[_c('div',{staticStyle:{"position":"relative"}},[_c('input',{attrs:{"type":_vm.constrains[k].type,"maxlength":_vm.constrains[k].maxlength},domProps:{"value":_vm.colorModel[k]},on:{"input":function($event){_vm.handleInput(k, $event);}}}),_vm._v(" "),_c('span',[_vm._v(_vm._s(k))])])])})),_vm._v(" "),_c('div',{staticClass:"cp__fm-switcher"},[_c('div',{on:{"click":function($event){_vm.changecurrentMode();}}},[_c('svg',{attrs:{"viewBox":"0 0 24 24"}},[_c('path',{attrs:{"fill":"#333","d":"M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"}}),_vm._v(" "),_c('path',{attrs:{"fill":"#333","d":"M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"}})])])])])])],1)},staticRenderFns: [],
+var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cp__wrapper"},[_c('v-ctrl',{attrs:{"direction":"vh","precision":2,"throttle":80},on:{"change":_vm.onSaturationChange}},[_c('div',{staticClass:"cp__v-ctrl cp__saturation"},[_c('div',{staticClass:"msk-hue",style:(_vm.styles.saturationPane)}),_vm._v(" "),_c('div',{staticClass:"msk-white"}),_vm._v(" "),_c('div',{staticClass:"msk-black"}),_vm._v(" "),_c('p',{staticClass:"cp__thumb",style:(_vm.styles.saturationThumb)})])]),_vm._v(" "),_c('div',{staticClass:"cp__ctrl-pane"},[_c('div',[_c('div',{staticClass:"cp__preview"},[_c('div',{style:(_vm.styles.preview)})]),_vm._v(" "),_c('div',{staticClass:"cp__tracks"},[_c('v-ctrl',{attrs:{"direction":"h","precision":2,"throttle":80},on:{"change":_vm.onHueChange}},[_c('div',{staticClass:"cp__v-ctrl cp__ctrl-bar cp__ctrl-hue"},[_c('div',{staticClass:"cp__thumb",style:(_vm.styles.hueThumb)})])]),_vm._v(" "),_c('v-ctrl',{attrs:{"direction":"h","precision":2,"throttle":80},on:{"change":_vm.onAlphaChange}},[_c('div',{staticClass:"cp__v-ctrl cp__ctrl-alpha"},[_c('div',{staticClass:"cp__thumb",style:(_vm.styles.alphaThumb)}),_vm._v(" "),_c('div',{staticClass:"cp__ctrl-bar",style:(_vm.styles.alphaTrack)})])])],1)]),_vm._v(" "),_c('div',{staticStyle:{"margin-top":"10px"}},[_c('div',{staticClass:"cp__fm-fields"},_vm._l((_vm.colorModes[_vm.currentMode]),function(k){return _c('div',{key:k,staticStyle:{"padding-left":"6px","width":"100%"}},[_c('div',{staticStyle:{"position":"relative"}},[_c('input',{attrs:{"type":_vm.constrains[k].type,"maxlength":_vm.constrains[k].maxlength},domProps:{"value":_vm.colorModel[k]},on:{"change":function($event){_vm.handleInput(k, $event);}}}),_vm._v(" "),_c('span',[_vm._v(_vm._s(k))])])])})),_vm._v(" "),_c('div',{staticClass:"cp__fm-switcher"},[_c('div',{on:{"click":function($event){_vm.changecurrentMode();}}},[_c('svg',{attrs:{"viewBox":"0 0 24 24"}},[_c('path',{attrs:{"fill":"#333","d":"M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"}}),_vm._v(" "),_c('path',{attrs:{"fill":"#333","d":"M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"}})])])])])])],1)},staticRenderFns: [],
   name: 'color-picker',
   props: {
     color: {
@@ -816,7 +816,9 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
       var hex = ref.hex;
       var rgba = ref.rgba;
       var hsla = ref.hsla;
-      var hexVal = alpha === 1 ? hex.slice(0, 7) : hex;
+      var hexVal = simplifyHex(
+        alpha === 1 ? hex.slice(0, 7) : hex
+      );
 
       this.$emit('change', {
         rgba: rgba,
@@ -832,7 +834,11 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
       var r = rgba[0];
       var g = rgba[1];
       var b = rgba[2];
-      index(this.colorModel, { r: r, g: g, b: b, h: h, s: s, l: l, hex: hexVal, a: alpha });
+      var shortHex = index(this.colorModel, {
+        r: r, g: g, b: b, h: h, s: s, l: l,
+        a: alpha,
+        hex: hexVal
+      });
     },
 
     changecurrentMode: function changecurrentMode () {
@@ -846,12 +852,12 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
       var currentMode = ref.currentMode;
       var colorModel = ref.colorModel;
       var value = event.target.value;
-      var num = (type === 's' || type === 'l') ? parseFloat(value) : Number(value);
+      var num = Number(value);
       var changed = false;
 
-      switch (isNaN(num) || type) {
+      switch (type) {
         case 'a':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 1);
             changed = true;
           }
@@ -860,14 +866,14 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
         case 'r':
         case 'g':
         case 'b':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 255) | 0;
             changed = true;
           }
           break
 
         case 'h':
-          if (colorModel[type] !== num) {
+          if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 360) | 0;
             changed = true;
           }
@@ -876,6 +882,7 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
         case 's':
         case 'l':
           if (value.slice(-1) === '%' && colorModel[type] !== value) {
+            num = parseFloat(value);
             colorModel[type] = (clamp(num, 0, 360) | 0) + "%";
             changed = true;
           }
@@ -884,7 +891,7 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
         case 'hex':
           if (value[0] === '#') {
             if (colorModel[type] !== value && index$1(value).every(function (i) { return !isNaN(i); })) {
-              colorModel[type] = value;
+              colorModel[type] = simplifyHex(value);
               changed = true;
             }
           }
@@ -914,7 +921,7 @@ var VColorComponent = {render: function(){var _vm=this;var _h=_vm.$createElement
   },
 
   created: function created () {
-    this.handleInput = debounce(this.handleInput.bind(this), 200);
+    this.handleInput = debounce(this.handleInput.bind(this), 50);
   }
 }
 
@@ -940,6 +947,10 @@ function getColorType (color) {
   }
 
   browser(false, (color + " is not valid color value!"));
+}
+
+function simplifyHex (val) {
+  return val.replace(/#([0-9a-f])\1([0-9a-f])\2([0-9a-f])\3([0-9a-f]?)\4$/, '#$1$2$3$4')
 }
 
 VColorComponent.install = function (Vue) {
