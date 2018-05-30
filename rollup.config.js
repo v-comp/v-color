@@ -12,7 +12,7 @@ const plugins = [
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   }),
   postcss({
-    extract: false
+    extract: isDEV ? false : './dist/index.css'
   }),
   vue({
     css: false,

@@ -560,36 +560,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 var index$2 = { VueCtrlComponent: VueCtrlComponent };
 
-function styleInject(css, ref) {
-  if ( ref === void 0 ) { ref = {}; }
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css = ".cp__wrapper {\n  width: 250px;\n  margin: 0;\n  background: #fff;\n  border-radius: 2px;\n  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .3), 0 4px 8px rgba(0, 0, 0, .3);\n          box-shadow: 0 0 2px rgba(0, 0, 0, .3), 0 4px 8px rgba(0, 0, 0, .3);\n  font-family: Menlo, 'Microsoft Yahei', sans-serif;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.cp__v-ctrl {\n  position: relative;\n}\n\n.cp__thumb {\n  position: absolute;\n  width: 12px;\n  height: 12px;\n  top: 0;\n  border-radius: 50%;\n  margin-top: -1px;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  background-color: #f8f8f8;\n  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .368627);\n          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .368627);\n  cursor: default;\n}\n\n\n.cp__saturation {\n  position: relative;\n  width: 100%;\n  padding-bottom: 55%;\n  border-radius: 2px 2px 0 0;\n  overflow: hidden\n}\n\n\n.cp__saturation > div {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  margin: 0;\n}\n\n\n.cp__saturation > .msk-white {\n  background: -webkit-gradient(linear, left top, right top, from(#fff), to(hsla(0, 0%, 100%, 0)));\n  background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));\n}\n\n\n.cp__saturation > .msk-black {\n  background: -webkit-gradient(linear, left bottom, left top, from(#000), to(transparent));\n  background: linear-gradient(0deg, #000, transparent);\n}\n\n\n.cp__saturation > .cp__thumb {\n  background-color: transparent;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  -webkit-box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, .3), 0 0 1px 2px rgba(0, 0, 0, .4);\n          box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, .3), 0 0 1px 2px rgba(0, 0, 0, .4);\n}\n\n\n.cp__ctrl-pane {\n  position: relative;\n  width: 100%;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 16px 16px 12px\n}\n\n\n.cp__ctrl-pane > div {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n\n\n.cp__tracks {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n}\n\n.cp__ctrl-bar {\n  height: 10px;\n}\n\n.cp__ctrl-hue {\n  background: -webkit-gradient(linear, right top, left top, from(red), color-stop(17%, #ff0), color-stop(33%, #0f0), color-stop(50%, #0ff), color-stop(67%, #00f), color-stop(83%, #f0f), to(red));\n  background: linear-gradient(-90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);\n}\n\n.cp__ctrl-alpha {\n  margin-top: 8px;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) left center;\n}\n\n.cp__preview {\n  position: relative;\n  width: 28px;\n  height: 28px;\n  margin-right: 5px;\n  overflow: hidden;\n  border-radius: 50%;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) center\n}\n\n.cp__preview > div {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 1px solid transparent;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n\n.cp__fm-fields {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1\n}\n\n.cp__fm-fields input {\n  width: 100%;\n  height: 22px;\n  font-size: 11px;\n  text-align: center;\n  color: rgb(51, 51, 51);\n  border-radius: 2px;\n  border: none;\n  -webkit-box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;\n          box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;\n  -webkit-transition: -webkit-box-shadow 0.2s ease;\n  transition: -webkit-box-shadow 0.2s ease;\n  transition: box-shadow 0.2s ease;\n  transition: box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;\n  -moz-appearance: textfield;\n}\n\n.cp__fm-fields input:focus {\n  outline: 0;\n  -webkit-box-shadow: rgb(0, 125, 255) 0px 0px 0px 1px inset;\n          box-shadow: rgb(0, 125, 255) 0px 0px 0px 1px inset;\n}\n\n.cp__fm-fields input::-webkit-inner-spin-button,\n    .cp__fm-fields input::-webkit-outer-spin-button {\n  -webkit-appearance: none !important;\n  margin: 0;\n}\n\n.cp__fm-fields span {\n  display: block;\n  margin-top: 12px;\n  text-transform: uppercase;\n  font-size: 11px;\n  line-height: 11px;\n  color: rgb(150, 150, 150);\n  text-align: center;\n}\n\n/* color format switcher */\n.cp__fm-switcher {\n  position: relative;\n  width: 32px;\n  text-align: right\n}\n.cp__fm-switcher > div {\n  position: relative;\n  margin-right: -4px;\n  margin-top: 12px;\n  cursor: pointer;\n}\n.cp__fm-switcher > div > svg {\n  width: 24px;\n  height: 24px;\n  border-radius: 5px;\n  background: transparent;\n  border: 1px solid transparent;\n}\n.cp__fm-switcher > div > svg:hover {\n  border-color: rgb(238, 238, 238);\n  background: rgb(238, 238, 238);\n}\n";
-styleInject(css);
-
 var colorModes = Object.freeze({
   rgba: ['r', 'g', 'b', 'a'],
   hsla: ['h', 's', 'l', 'a'],
