@@ -114,6 +114,11 @@
   display: flex;
   flex: 1;
 
+  & > div {
+    padding-left: 6px;
+    flex: 1 0 0;
+  }
+
   & input {
     width: 100%;
     height: 22px;

@@ -48,7 +48,7 @@
 
       <div style="margin-top: 10px">
         <div class="cp__fm-fields">
-          <div style="padding-left: 6px; width: 100%;" v-for="k in colorModes[currentMode]" :key="k">
+          <div v-for="k in colorModes[currentMode]" :key="k">
             <div style="position: relative;">
               <input
                 @change="handleInput(k, $event)"
