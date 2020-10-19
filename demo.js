@@ -7,7 +7,7 @@ window.vm = new window.Vue({
 </color-picker>`,
   data () {
     return {
-      color: '#f0f'
+      color: '#0aa0ff'
     }
   },
 })

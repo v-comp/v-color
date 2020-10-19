@@ -71,6 +71,7 @@
 <script>
 import clamp from 'lodash/clamp'
 import debounce from 'lodash/debounce'
+import isEqual from 'lodash/isEqual'
 
 import invariant from 'invariant'
 import objectAssign from 'object-assign'
@@ -177,19 +178,18 @@ export default {
   watch: {
     value: {
       immediate: true,
-      handler (newVal, oldVal) {
-        console.log(newVal, oldVal)
-        if (newVal !== oldVal) {
-          objectAssign(this, this.digestProp(newVal))
-        }
+      handler (val, oldVal) {
+        if (val === oldVal) return
+
+        objectAssign(this, this.digestProp(val))
       }
     },
     rgba: {
       immediate: true,
-      handler (newVal, oldVal) {
-        if (`${newVal}` !== `${oldVal}`) {
-          this.emitChange()
-        }
+      handler (val, oldVal) {
+        if (isEqual(val, oldVal)) return
+
+        this.emitChange()
       }
     }
   },
@@ -204,7 +204,6 @@ export default {
         alpha
       ]
     },
-
     rgba () {
       const { alpha, hsva } = this
       const [r, g, b] = hsv2rgb(hsva)
@@ -215,7 +214,6 @@ export default {
         alpha
       ]
     },
-
     hsla () {
       const { alpha, hsva } = this
       const [h, s, l] = hsv2hsl(hsva)
@@ -226,11 +224,9 @@ export default {
         alpha
       ]
     },
-
     hex () {
       return rgb2hex(this.rgba)
     },
-
     previewBorderColor () {
       const [r, g, b] = this.rgba
       if ((r + g + b) / 3 > 235) {
@@ -238,7 +234,6 @@ export default {
       }
       return 'transparent'
     },
-
     styles () {
       const { rgba, alpha, hue, saturation } = this
       const strRGB = rgba.slice(0, 3).join(', ')
@@ -318,7 +313,7 @@ export default {
           this.$emit('input', `hsla(${hsla.join(',')})`)
           break
         case 'rgba':
-          this.$emit('input', `hsla(${rgba.join(',')})`)
+          this.$emit('input', `rgba(${rgba.join(',')})`)
           break
       }
 
