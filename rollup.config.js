@@ -1,9 +1,7 @@
-import buble from 'rollup-plugin-buble'
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import vue from 'rollup-plugin-vue'
-import replace from 'rollup-plugin-replace'
-import postcss from 'rollup-plugin-postcss'
+import replace from '@rollup/plugin-replace'
+import resolve from '@rollup/plugin-node-resolve'
 
 const NODE_ENV = process.env.NODE_ENV
 const isDEV = NODE_ENV !== 'production'
@@ -11,22 +9,15 @@ const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   }),
-  postcss({
-    extract: isDEV ? false : './dist/index.css'
-  }),
-  vue({
-    css: false,
-    compileTemplate: true
-  }),
   commonjs(),
-  resolve({
-    jsnext: true,
-    main: true,
-    browser: true
+  resolve(),
+  vue({
+    style: {
+      postcssPlugins: [
+        require('postcss-nested')
+      ]
+    }
   }),
-  buble({
-    objectAssign: 'Object.assign'
-  })
 ]
 
 let options = [
@@ -35,7 +26,7 @@ let options = [
     output: {
       file: 'dist/index.esm.js',
       format: 'es',
-      sourcemap: true,
+      // sourcemap: true,
       strict: true
     },
     external: id => /^lodash/.test(id),
@@ -47,7 +38,7 @@ let options = [
       file: 'dist/index.js',
       format: 'umd',
       name: 'VColor',
-      sourcemap: true,
+      // sourcemap: true,
       strict: true
     },
     plugins
@@ -60,7 +51,7 @@ if (isDEV) {
     output: {
       file: 'dist/demo.js',
       format: 'umd',
-      sourcemap: true,
+      // sourcemap: true,
       strict: true
     },
     plugins

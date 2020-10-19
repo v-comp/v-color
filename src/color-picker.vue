@@ -1,75 +1,70 @@
 <template>
-  <div class="cp__wrapper">
+  <div class="wrapper">
     <v-ctrl
       direction="vh"
       :precision="2"
       :throttle="80"
       @change="onSaturationChange"
     >
-      <div class="cp__v-ctrl cp__saturation">
-        <div class="msk-hue" :style="styles.saturationPane"></div>
-        <div class="msk-white"></div>
-        <div class="msk-black"></div>
-        <p class="cp__thumb" :style="styles.saturationThumb"></p>
+      <div class="saturation">
+        <div class="mask hue" :style="styles.saturationPane"></div>
+        <div class="mask white"></div>
+        <div class="mask black"></div>
+        <p class="thumb" :style="styles.saturationThumb"></p>
       </div>
     </v-ctrl>
 
-    <div class="cp__ctrl-pane">
-      <div>
-        <div class="cp__preview">
-          <div :style="styles.preview"></div>
-        </div>
-
-        <div class="cp__tracks">
-          <v-ctrl
-            direction="h"
-            :precision="2"
-            :throttle="80"
-            @change="onHueChange"
-          >
-            <div class="cp__v-ctrl cp__ctrl-bar cp__ctrl-hue">
-              <div class="cp__thumb" :style="styles.hueThumb"></div>
-            </div>
-          </v-ctrl>
-
-          <v-ctrl
-            direction="h"
-            :precision="2"
-            :throttle="80"
-            @change="onAlphaChange"
-          >
-            <div class="cp__v-ctrl cp__ctrl-alpha">
-              <div class="cp__thumb" :style="styles.alphaThumb"></div>
-              <div class="cp__ctrl-bar" :style="styles.alphaTrack"></div>
-            </div>
-          </v-ctrl>
-        </div>
-      </div>
-
-      <div style="margin-top: 10px">
-        <div class="cp__fm-fields">
-          <div v-for="k in colorModes[currentMode]" :key="k">
-            <div style="position: relative;">
-              <input
-                @change="handleInput(k, $event)"
-                :value="colorModel[k]"
-                :type="constrains[k].type"
-                :maxlength="constrains[k].maxlength"
-              >
-              <span>{{k}}</span>
-            </div>
+    <section class="controls">
+      <section class="sliders">
+        <v-ctrl
+          direction="h"
+          :precision="2"
+          :throttle="80"
+          @change="onHueChange"
+        >
+          <div class="slider bar hue">
+            <div class="thumb" :style="styles.hueThumb"></div>
           </div>
-        </div>
+        </v-ctrl>
+        <v-ctrl
+          direction="h"
+          :precision="2"
+          :throttle="80"
+          @change="onAlphaChange"
+        >
+          <div class="slider alpha">
+            <div class="thumb" :style="styles.alphaThumb"></div>
+            <div class="bar" :style="styles.alphaTrack"></div>
+          </div>
+        </v-ctrl>
+      </section>
 
-        <div class="cp__fm-switcher">
-          <div @click="changecurrentMode()">
-            <svg viewBox="0 0 24 24">
-              <path fill="#333" d="M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z" />
-              <path fill="#333" d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z" />
-            </svg>
-        </div>
-      </div>
-    </div>
+      <section class="modes">
+        <select
+          v-model="currentMode"
+          class="mode-input"
+          :style="{ width: '60px' }"
+        >
+          <option
+            v-for="(_, key) in colorModes"
+            :key="key"
+            :value="key"
+          >
+            {{ key }}
+          </option>
+        </select>
+        <input
+          v-for="k in colorModes[currentMode]"
+          :key="k"
+          class="mode-input"
+          :style="{ width: `calc((100% - 60px) / ${colorModes[currentMode].length})` }"
+          :value="colorModel[k]"
+          :type="constrains[k].type"
+          :maxlength="constrains[k].maxlength"
+          @change="handleInput(k, $event)"
+        />
+      </section>
+    </section>
   </div>
 </template>
 
@@ -89,13 +84,37 @@ import hsl2rgb from 'pure-color/convert/hsl2rgb'
 
 import VCtrl from 'v-ctrl'
 
-import './color-picker.css'
-
 const colorModes = Object.freeze({
   rgba: ['r', 'g', 'b', 'a'],
   hsla: ['h', 's', 'l', 'a'],
   hex: ['hex']
 })
+
+function toPercent (n, precision = 3) {
+  // eslint-disable-next-line
+  const num = (n * 100).toPrecision(precision | 0)
+  return `${num}%`
+}
+
+function getColorType (color) {
+  if (color[0] === '#') {
+    return 'hex'
+  }
+
+  if (color.indexOf('rgb') === 0) {
+    return 'rgba'
+  }
+
+  if (color.indexOf('hsl') === 0) {
+    return 'hsla'
+  }
+
+  invariant(false, `${color} is not valid color value!`)
+}
+
+function simplifyHex (val) {
+  return val.replace(/#([0-9a-f])\1([0-9a-f])\2([0-9a-f])\3([0-9a-f]?)\4$/, '#$1$2$3$4')
+}
 
 export default {
   name: 'color-picker',
@@ -381,30 +400,102 @@ export default {
     this.handleInput = debounce(this.handleInput.bind(this), 50)
   }
 }
-
-function toPercent (n, precision = 3) {
-  // eslint-disable-next-line
-  const num = (n * 100).toPrecision(precision | 0)
-  return `${num}%`
-}
-
-function getColorType (color) {
-  if (color[0] === '#') {
-    return 'hex'
-  }
-
-  if (color.indexOf('rgb') === 0) {
-    return 'rgba'
-  }
-
-  if (color.indexOf('hsl') === 0) {
-    return 'hsla'
-  }
-
-  invariant(false, `${color} is not valid color value!`)
-}
-
-function simplifyHex (val) {
-  return val.replace(/#([0-9a-f])\1([0-9a-f])\2([0-9a-f])\3([0-9a-f]?)\4$/, '#$1$2$3$4')
-}
 </script>
+
+<style lang="postcss" scoped>
+.wrapper {
+  width: 260px;
+  margin: 0;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.slider {
+  position: relative;
+  margin-bottom: 16px;
+
+  &.hue {
+    background: linear-gradient(-90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
+  }
+
+  &.alpha {
+    margin-top: 8px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) left center;
+  }
+}
+
+.bar {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.controls {
+  padding: 20px 16px;
+}
+
+.modes {
+  display: flex;
+  align-items: center;
+}
+
+.mode-input {
+  flex: 1 1 auto;
+  width: auto;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  padding: 0;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  color: #1A202C;
+}
+
+.thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  border-radius: 50%;
+  margin-top: -1px;
+  transform: translateX(-50%);
+  background-color: #f8f8f8;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.368627);
+  cursor: default;
+}
+
+
+.saturation {
+  position: relative;
+  width: 100%;
+  padding-bottom: 55%;
+  overflow: hidden;
+
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+
+  & > .thumb {
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.mask {
+  &.white {
+    background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+  }
+
+  &.black {
+    background: linear-gradient(0deg, #000, transparent);
+  }
+}
+</style>
