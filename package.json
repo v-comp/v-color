@@ -1,5 +1,5 @@
 {
-  "name": "@uscreen-video/v-color",
+  "name": "@uscreentv/v-color",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
