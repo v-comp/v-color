@@ -61,7 +61,7 @@
           :value="colorModel[k]"
           :type="constrains[k].type"
           :maxlength="constrains[k].maxlength"
-          @change="handleInput(k, $event)"
+          @input="handleInput(k, $event)"
         />
       </section>
     </section>
@@ -326,12 +326,6 @@ export default {
         a: alpha,
         hex: hexVal
       })
-    },
-
-    changecurrentMode () {
-      const modes = Object.keys(this.colorModes)
-      const index = modes.indexOf(this.currentMode)
-      this.currentMode = modes[(index + 1) % modes.length]
     },
 
     handleInput (type, event) {
