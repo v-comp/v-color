@@ -42,8 +42,7 @@
       <section class="modes">
         <select
           v-model="currentMode"
-          class="mode-input"
-          :style="{ width: '60px' }"
+          class="mode-input select"
         >
           <option
             v-for="(_, key) in colorModes"
@@ -57,13 +56,29 @@
           v-for="k in colorModes[currentMode]"
           :key="k"
           class="mode-input"
-          :style="{ width: `calc((100% - 60px) / ${colorModes[currentMode].length})` }"
           :value="colorModel[k]"
           :type="constrains[k].type"
           :maxlength="constrains[k].maxlength"
           @input="handleInput(k, $event)"
         />
       </section>
+    </section>
+
+    <section
+      v-if="withSuggestions && suggestions.length > 0"
+      class="suggestions"
+    >
+      <p>Previously used colors</p>
+      <ul>
+        <li v-for="color in suggestions" :key="color">
+          <button
+            type="button"
+            class="suggestion"
+            :style="{ backgroundColor: color }"
+            @click="onClickColor(color)"
+          />
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -124,6 +139,10 @@ export default {
       type: String,
       default: '#ff0000',
     },
+    withSuggestions: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   components: {
@@ -144,6 +163,7 @@ export default {
 
     return {
       ...this.digestProp(value),
+      suggestions: [],
       currentMode: getColorType(value),
       colorModes,
       colorModel: {
@@ -298,25 +318,28 @@ export default {
       // according to Chrome DevTool
       this.alpha = parseFloat(e.toFixed(2))
     },
-
     emitChange () {
       const { alpha, hex, rgba, hsla, currentMode } = this
       const hexVal = simplifyHex(
         alpha === 1 ? hex.slice(0, 7) : hex
       )
 
-      switch (currentMode) {
-        case 'hex':
-          this.$emit('input', hex)
-          break
-        case 'hsla':
-          this.$emit('input', `hsla(${hsla.join(',')})`)
-          break
-        case 'rgba':
-          this.$emit('input', `rgba(${rgba.join(',')})`)
-          break
+      if (currentMode === 'hex') {
+        this.updateSuggestions(hex)
+        this.$emit('input', hex)
+      } else if (currentMode === 'rgba') {
+        const color = `hsla(${hsla.join(',')})`
+
+        this.updateSuggestions(color)
+        this.$emit('input', color)
+      } else if (currentMode === 'hsla') {
+        const color = `rgba(${rgba.join(',')})`
+
+        this.updateSuggestions(color)
+        this.$emit('input', color)
       }
 
+      // FIXME: potential problem from original sources
       // this ensures that every component in
       // our model is up to date
       const [h, s, l] = hsla
@@ -327,7 +350,9 @@ export default {
         hex: hexVal
       })
     },
-
+    onClickColor(color) {
+      this.$emit('input', color)
+    },
     handleInput (type, event) {
       const { currentMode, colorModel } = this
       const { target: { value } } = event
@@ -389,11 +414,35 @@ export default {
 
         objectAssign(this, this.digestProp(literal))
       }
+    },
+    loadSuggestions() {
+      const suggestions = localStorage.getItem('V_COLOR_PICKER_SUGGESTIONS')
+
+      if (!suggestions) return []
+
+      this.suggestions = JSON.parse(suggestions)
+    },
+    updateSuggestions(color) {
+      // debugger
+      if (this.suggestions.includes(color)) return
+
+      let updatedSuggestions
+
+      if (this.suggestions.length < 7) {
+        updatedSuggestions = this.suggestions.concat(color)
+      } else {
+        updatedSuggestions = this.suggestions.slice(1, 7).concat(color)
+      }
+
+      this.suggestions = updatedSuggestions
+      localStorage.setItem('V_COLOR_PICKER_SUGGESTIONS', JSON.stringify(updatedSuggestions))
     }
   },
 
   created () {
-    this.handleInput = debounce(this.handleInput.bind(this), 50)
+    this.handleInput = debounce(this.handleInput.bind(this), 250)
+    this.emitChange = debounce(this.emitChange.bind(this), 250)
+    this.loadSuggestions()
   }
 }
 </script>
@@ -429,6 +478,7 @@ export default {
 
 .controls {
   padding: 20px 16px;
+  padding-bottom: 16px;
 }
 
 .modes {
@@ -437,8 +487,9 @@ export default {
 }
 
 .mode-input {
-  flex: 1 1 auto;
-  width: auto;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
@@ -447,6 +498,15 @@ export default {
   padding: 0;
   font-family: Inter, Helvetica, Arial, sans-serif;
   color: #1A202C;
+}
+
+.mode-input.select {
+  flex: 0 0 42px;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  background-size: 6px;
+  background-position: center right;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOCA2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMSAxLjQ3MzM5TDQgNC41MjY2Nkw3IDEuNDczMzkiIHN0cm9rZT0iIzlFQjVDOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=');
 }
 
 .thumb {
@@ -496,5 +556,36 @@ export default {
   &.black {
     background: linear-gradient(0deg, #000, transparent);
   }
+}
+
+.suggestions {
+  border-top: 1px solid #E2E8F0;
+  padding: 20px 16px;
+  padding-top: 16px;
+}
+
+.suggestions p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #1A202C;
+}
+
+.suggestions ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suggestion {
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+  border: 1px solid #E2E8F0;
+  border-radius: 50%;
 }
 </style>
