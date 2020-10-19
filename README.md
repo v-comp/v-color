@@ -2,9 +2,13 @@
 
 > Simple color picker for `vue@2`
 
-<div align="center" style="margin: 60px 0 40px">
+<br>
+<br>
+<br>
+<div align="center">
   <img src="public/preview.png" width="65%" />
 </div>
+<br>
 
 ## Install
 
