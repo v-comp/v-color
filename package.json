@@ -59,5 +59,8 @@
     "url": "https://github.com/v-comp/v-color/issues"
   },
   "homepage": "https://github.com/v-comp/v-color#readme",
-  "author": "wemlion <angusfu1126@qq.com>"
+  "author": "wemlion <angusfu1126@qq.com>",
+  "publishConfig": {
+    "access": "public"
+  }
 }
