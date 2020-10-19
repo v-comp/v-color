@@ -10,4 +10,9 @@ window.vm = new window.Vue({
       color: '#0aa0ff'
     }
   },
+  watch: {
+    color(val) {
+      console.log('color change: ', val)
+    }
+  }
 })

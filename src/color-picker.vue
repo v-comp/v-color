@@ -134,6 +134,7 @@ function simplifyHex (val) {
 
 export default {
   name: 'ColorPicker',
+
   props: {
     value: {
       type: String,
@@ -151,7 +152,6 @@ export default {
 
   data () {
     const { value } = this
-
     const commonNumber = {
       type: 'number',
       maxlength: 3,
@@ -204,14 +204,6 @@ export default {
         objectAssign(this, this.digestProp(val))
       }
     },
-    rgba: {
-      immediate: true,
-      handler (val, oldVal) {
-        if (isEqual(val, oldVal)) return
-
-        this.emitChange()
-      }
-    }
   },
 
   computed: {
@@ -309,46 +301,39 @@ export default {
     },
     onSaturationChange ([x, y]) {
       this.saturation = { x, y }
+      this.emitChange()
     },
     onHueChange (e) {
       this.hue = 1 - e
+      this.emitChange()
     },
     onAlphaChange (e) {
       // format of alpha: `.2f`
       // according to Chrome DevTool
       this.alpha = parseFloat(e.toFixed(2))
+      this.emitChange()
     },
     emitChange () {
-      const { alpha, hex, rgba, hsla, currentMode } = this
-      const hexVal = simplifyHex(
-        alpha === 1 ? hex.slice(0, 7) : hex
-      )
+      const { hex, rgba, hsla, currentMode } = this
+
+      this.updateColorModel()
 
       if (currentMode === 'hex') {
         this.updateSuggestions(hex)
         this.$emit('input', hex)
-      } else if (currentMode === 'rgba') {
+      } else if (currentMode === 'hsla') {
         const color = `hsla(${hsla.join(',')})`
 
         this.updateSuggestions(color)
         this.$emit('input', color)
-      } else if (currentMode === 'hsla') {
+      } else if (currentMode === 'rgba') {
         const color = `rgba(${rgba.join(',')})`
 
         this.updateSuggestions(color)
         this.$emit('input', color)
       }
 
-      // FIXME: potential problem from original sources
-      // this ensures that every component in
-      // our model is up to date
-      const [h, s, l] = hsla
-      const [r, g, b] = rgba
-      const shortHex = objectAssign(this.colorModel, {
-        r, g, b, h, s, l,
-        a: alpha,
-        hex: hexVal
-      })
+
     },
     onClickColor(color) {
       this.$emit('input', color)
@@ -366,7 +351,6 @@ export default {
             changed = true
           }
           break
-
         case 'r':
         case 'g':
         case 'b':
@@ -375,14 +359,12 @@ export default {
             changed = true
           }
           break
-
         case 'h':
           if (colorModel[type] !== num && !isNaN(num)) {
             colorModel[type] = clamp(num, 0, 360) | 0
             changed = true
           }
           break
-
         case 's':
         case 'l':
           if (value.slice(-1) === '%' && colorModel[type] !== value) {
@@ -391,7 +373,6 @@ export default {
             changed = true
           }
           break
-
         case 'hex':
           if (value[0] === '#') {
             if (colorModel[type] !== value && parse2rgb(value).every(i => !isNaN(i))) {
@@ -402,18 +383,32 @@ export default {
           break
       }
 
-      if (changed) {
-        const { h, s, l, r, g, b, a, hex } = colorModel
-        let literal = hex
+      if (!changed) return
 
-        if (currentMode === 'rgba') {
-          literal = `rgba(${ [r, g, b, a] })`
-        } else if (currentMode === 'hsla') {
-          literal = `hsla(${ [h, s, l, a] })`
-        }
+      const { h, s, l, r, g, b, a, hex } = colorModel
+      let literal = hex
 
-        objectAssign(this, this.digestProp(literal))
+      if (currentMode === 'rgba') {
+        literal = `rgba(${ [r, g, b, a] })`
+      } else if (currentMode === 'hsla') {
+        literal = `hsla(${ [h, s, l, a] })`
       }
+
+      objectAssign(this, this.digestProp(literal))
+      this.emitChange()
+    },
+    updateColorModel() {
+      const { hsla, rgba, hex, alpha } = this
+      const [h, s, l] = hsla
+      const [r, g, b] = rgba
+      const hexVal = simplifyHex(
+        alpha === 1 ? hex.slice(0, 7) : hex
+      )
+      objectAssign(this.colorModel, {
+        r, g, b, h, s, l,
+        a: alpha,
+        hex: hexVal,
+      })
     },
     loadSuggestions() {
       const suggestions = localStorage.getItem('V_COLOR_PICKER_SUGGESTIONS')
@@ -423,7 +418,6 @@ export default {
       this.suggestions = JSON.parse(suggestions)
     },
     updateSuggestions(color) {
-      // debugger
       if (this.suggestions.includes(color)) return
 
       let updatedSuggestions
@@ -442,6 +436,8 @@ export default {
   created () {
     this.handleInput = debounce(this.handleInput.bind(this), 250)
     this.emitChange = debounce(this.emitChange.bind(this), 250)
+
+    this.updateColorModel()
     this.loadSuggestions()
   }
 }
