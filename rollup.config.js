@@ -4,7 +4,7 @@ import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
 
 const NODE_ENV = process.env.NODE_ENV
-const isDEV = NODE_ENV !== 'production'
+const DEVELOPMENT = NODE_ENV !== 'production'
 const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
@@ -26,7 +26,6 @@ let options = [
     output: {
       file: 'dist/index.esm.js',
       format: 'es',
-      // sourcemap: true,
       strict: true
     },
     external: id => /^lodash/.test(id),
@@ -38,20 +37,18 @@ let options = [
       file: 'dist/index.js',
       format: 'umd',
       name: 'VColor',
-      // sourcemap: true,
       strict: true
     },
     plugins
   }
 ]
 
-if (isDEV) {
+if (DEVELOPMENT) {
   options = [{
     input: './demo.js',
     output: {
       file: 'dist/demo.js',
       format: 'umd',
-      // sourcemap: true,
       strict: true
     },
     plugins
