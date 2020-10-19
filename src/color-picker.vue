@@ -117,12 +117,12 @@ function simplifyHex (val) {
 }
 
 export default {
-  name: 'color-picker',
+  name: 'ColorPicker',
   props: {
-    color: {
+    value: {
       type: String,
-      default: '#ff0000'
-    }
+      default: '#ff0000',
+    },
   },
 
   components: {
@@ -130,7 +130,7 @@ export default {
   },
 
   data () {
-    const { color } = this
+    const { value } = this
 
     const commonNumber = {
       type: 'number',
@@ -142,8 +142,8 @@ export default {
     }
 
     return {
-      ...this.digestProp(color),
-      currentMode: getColorType(color),
+      ...this.digestProp(value),
+      currentMode: getColorType(value),
       colorModes,
       colorModel: {
         hex: '',
@@ -175,9 +175,10 @@ export default {
   },
 
   watch: {
-    color: {
+    value: {
       immediate: true,
       handler (newVal, oldVal) {
+        console.log(newVal, oldVal)
         if (newVal !== oldVal) {
           objectAssign(this, this.digestProp(newVal))
         }
@@ -273,7 +274,7 @@ export default {
   },
 
   methods: {
-    digestProp (val) {
+    digestProp(val) {
       const rgba = parse2rgb(val)
       const alpha = rgba[3] == null ? 1 : rgba[3]
       const [hue, saturation, value] = rgb2hsv(rgba)
@@ -304,16 +305,22 @@ export default {
     },
 
     emitChange () {
-      const { alpha, hex, rgba, hsla } = this
+      const { alpha, hex, rgba, hsla, currentMode } = this
       const hexVal = simplifyHex(
         alpha === 1 ? hex.slice(0, 7) : hex
       )
 
-      this.$emit('change', {
-        rgba,
-        hsla,
-        hex: hexVal
-      })
+      switch (currentMode) {
+        case 'hex':
+          this.$emit('input', hex)
+          break
+        case 'hsla':
+          this.$emit('input', `hsla(${hsla.join(',')})`)
+          break
+        case 'rgba':
+          this.$emit('input', `hsla(${rgba.join(',')})`)
+          break
+      }
 
       // this ensures that every component in
       // our model is up to date
@@ -485,7 +492,10 @@ export default {
   & > .thumb {
     background-color: transparent;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow:
+      0 0 0 1.5px #fff,
+      inset 0 0 1px 1px rgba(0, 0, 0, 0.3),
+      0 0 1px 2px rgba(0, 0, 0, 0.4);
   }
 }
 
