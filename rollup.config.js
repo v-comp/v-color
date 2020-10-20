@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
+import { terser } from 'rollup-plugin-terser'
 
 const NODE_ENV = process.env.NODE_ENV
 const DEVELOPMENT = NODE_ENV !== 'production'
@@ -19,6 +20,10 @@ const plugins = [
     }
   }),
 ]
+
+if (!DEVELOPMENT) {
+  plugins.push(terser())
+}
 
 let options = [
   {
