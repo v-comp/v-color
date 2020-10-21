@@ -1,6 +1,6 @@
 {
   "name": "@uscreentv/v-color",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.js",
@@ -54,13 +54,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/v-comp/v-color.git"
+    "url": "https://github.com/Uscreen-video/v-color.git"
   },
   "bugs": {
-    "url": "https://github.com/v-comp/v-color/issues"
+    "url": "https://github.com/Uscreen-video/v-color/issues"
   },
-  "homepage": "https://github.com/v-comp/v-color#readme",
-  "author": "wemlion <angusfu1126@qq.com>",
+  "homepage": "https://github.com/Uscreen-video/v-color",
   "publishConfig": {
     "access": "public"
   }
