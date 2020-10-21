@@ -115,9 +115,6 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  line-height: 1.71;
-  font-family: Inter, Helvetica, Arial, sans-serif;
-  font-size: 14px;
 }
 
 .preview {
@@ -126,7 +123,6 @@ export default {
   vertical-align: middle;
   width: 32px;
   height: 32px;
-  margin-right: 8px;
   border: 1px solid #e2e8f0;
   border-radius: 50%;
 }
