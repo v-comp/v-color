@@ -133,7 +133,7 @@ function simplifyHex (val) {
 }
 
 export default {
-  name: 'ColorPicker',
+  name: 'VColorPicker',
 
   props: {
     value: {

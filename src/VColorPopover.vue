@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ColorPicker from './ColorPicker.vue'
+import ColorPicker from './VColorPicker.vue'
 
 const POSITIONS = {
   BOTTOM: 'bottom',
@@ -140,7 +140,7 @@ export default {
 
 .frame {
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 
   &.bottom {
     left: 0;

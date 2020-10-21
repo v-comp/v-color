@@ -1,2 +1,2 @@
-export { default as VColorPicker } from './ColorPicker.vue'
-export { default as VColorPopover } from './ColorPopover.vue'
+export { default as VColorPicker } from './VColorPicker.vue'
+export { default as VColorPopover } from './VColorPopover.vue'
