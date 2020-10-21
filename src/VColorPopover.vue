@@ -2,13 +2,10 @@
   <div class="popover" ref="root">
     <button type="text" class="trigger" @click="onToggle">
       <span class="preview" :style="{ 'background-color': value }" />
-      <template v-if="withLabel">
-        {{ value }}
-      </template>
     </button>
     <transition :name="currentTransitionName">
       <div v-if="isVisible" class="frame" :class="framePositionClass">
-        <color-picker :value="value" @input="onInput" />
+        <color-picker :value="value" :with-suggestions="withSuggestions" @input="onInput" />
       </div>
     </transition>
   </div>
@@ -44,10 +41,6 @@ export default {
       type: String,
       default: POSITIONS.BOTTOM,
       validator: value => Object.values(POSITIONS).includes(value),
-    },
-    withLabel: {
-      type: Boolean,
-      default: true,
     },
   },
 

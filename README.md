@@ -86,14 +86,6 @@ _possible values_: `bottom|left|top|right`
 
 _default value_: `bottom`
 
----
-
-**`withLabel`** – Controls color label rendering near the color preview
-
-_type_: `boolean`
-
-_default value_: `true`
-
 **Events**
 
 ---
