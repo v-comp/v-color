@@ -1,6 +1,6 @@
 <template>
   <div class="popover" ref="root">
-    <button type="text" class="trigger" @click="onToggle">
+    <button type="button" class="trigger" @click="onToggle">
       <span class="preview" :style="{ 'background-color': value }" />
     </button>
     <transition :name="currentTransitionName">
