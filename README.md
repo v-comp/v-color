@@ -90,4 +90,4 @@ _default value_: `bottom`
 
 ---
 
-**`input`** – Emits on each color change
+**`input -> (value: string, suggestion?: boolean)`** – Emits on each color change or suggestion click
