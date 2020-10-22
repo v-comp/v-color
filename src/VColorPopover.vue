@@ -86,6 +86,14 @@ export default {
     }
   },
 
+  created() {
+    window.addEventListener('keypress', this.onKeydown)
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('keypress', this.onKeydown)
+  },
+
   methods: {
     getElementPath(node) {
       const path = []
@@ -101,6 +109,11 @@ export default {
     onToggle() {
       this.isVisible = !this.isVisible
     },
+    onKeydown(e) {
+      if (!this.isVisible || e.code !== 'Escape') return
+
+      this.isVisible = false
+    },
     onClickOutside(e) {
       const path = e.path || this.getElementPath(e.target)
 
@@ -108,8 +121,12 @@ export default {
 
       this.isVisible = false
     },
-    onInput(val) {
+    onInput(val, suggestion) {
       this.$emit('input', val)
+
+      if (!suggestion) return
+
+      this.isVisible = false
     }
   },
 }

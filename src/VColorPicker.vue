@@ -332,11 +332,9 @@ export default {
         this.updateSuggestions(color)
         this.$emit('input', color)
       }
-
-
     },
     onClickColor(color) {
-      this.$emit('input', color)
+      this.$emit('input', color, true)
     },
     handleInput (type, event) {
       const { currentMode, colorModel } = this
