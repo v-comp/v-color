@@ -87,11 +87,24 @@ export default {
   },
 
   methods: {
+    getElementPath(node) {
+      const path = []
+      let lastElement = node
+
+      while (lastElement !== document.body) {
+        path.unshift(lastElement)
+        lastElement = lastElement.parentElement
+      }
+
+      return path
+    },
     onToggle() {
       this.isVisible = !this.isVisible
     },
     onClickOutside(e) {
-      if (e.path.includes(this.$refs.root)) return
+      const path = e.path || this.getElementPath(e.target)
+
+      if (path.includes(this.$refs.root)) return
 
       this.isVisible = false
     },
