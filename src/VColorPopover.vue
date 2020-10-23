@@ -87,11 +87,11 @@ export default {
   },
 
   created() {
-    window.addEventListener('keypress', this.onKeydown)
+    document.addEventListener('keyup', this.onKeydown)
   },
 
   beforeDestroy() {
-    window.removeEventListener('keypress', this.onKeydown)
+    document.removeEventListener('keyup', this.onKeydown)
   },
 
   methods: {
