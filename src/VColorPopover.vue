@@ -5,7 +5,7 @@
     </button>
     <transition :name="currentTransitionName">
       <div v-if="isVisible" class="frame" :class="framePositionClass">
-        <color-picker :value="value" :with-suggestions="withSuggestions" @input="onInput" />
+        <color-picker :value="value" :with-suggestions="withSuggestions" :with-alpha="withAlpha" @input="onInput" />
       </div>
     </transition>
   </div>
@@ -34,6 +34,10 @@ export default {
       default: '#ff0000',
     },
     withSuggestions: {
+      type: Boolean,
+      default: true,
+    },
+    withAlpha: {
       type: Boolean,
       default: true,
     },
