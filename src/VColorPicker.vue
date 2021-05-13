@@ -27,6 +27,7 @@
           </div>
         </v-ctrl>
         <v-ctrl
+          v-if="withAlpha"
           direction="h"
           :precision="2"
           :throttle="80"
@@ -144,6 +145,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    withAlpha: {
+      type: Boolean,
+      default: true,
+    }
   },
 
   components: {
