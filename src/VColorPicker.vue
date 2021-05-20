@@ -437,7 +437,7 @@ export default {
   },
 
   created () {
-    this.handleInput = debounce(this.handleInput.bind(this), 250)
+    this.handleInput = debounce(this.handleInput.bind(this), 900)
     this.emitChange = debounce(this.emitChange.bind(this), 250)
 
     this.updateColorModel()
